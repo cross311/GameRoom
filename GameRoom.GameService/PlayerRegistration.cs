@@ -122,12 +122,14 @@ namespace GameRoom.GameService
     public class PlayerAccessToken
     {
         private readonly AccessToken _AccessToken;
+        private readonly String _Ticket;
         private readonly DateTime _IssuedAt;
         private readonly DateTime _ExpiresAt;
 
-        public PlayerAccessToken(AccessToken accessToken, DateTime issuedAt, DateTime expiresAt)
+        public PlayerAccessToken(AccessToken accessToken, string ticket, DateTime issuedAt, DateTime expiresAt)
         {
             _AccessToken = accessToken;
+            _Ticket = ticket;
             _IssuedAt = issuedAt;
             _ExpiresAt = expiresAt;
         }
@@ -146,15 +148,16 @@ namespace GameRoom.GameService
         {
             get { return _ExpiresAt; }
         }
+
+        public string Ticket
+        {
+            get { return _Ticket; }
+        }
     }
 
     public interface IPlayerRegistration
     {
         Player RegisterPlayer(PlayerRegistration playerRegistration);
-
-        Player RegisterPlayersAdditionalProvider(PlayerAdditionalExternalProviderRegistration additionalExternalProviderRegistration);
-
-        Player GetPlayerForExternalProviderIdentity(PlayerExternalProviderIdentity externalProviderIdentity);
         
         PlayerAccessToken GetAccessTokenForPlayer(Player player);
 

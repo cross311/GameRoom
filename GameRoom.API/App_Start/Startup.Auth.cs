@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
+using Microsoft.Owin.Security.Infrastructure;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
 using GameRoom.API.Providers;
@@ -39,7 +41,8 @@ namespace GameRoom.API
                 Provider = new ApplicationOAuthProvider(PublicClientId),
                 AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(14),
-                AllowInsecureHttp = true
+                AllowInsecureHttp = true,
+                AccessTokenProvider = new t()
             };
 
             // Enable the application to use bearer tokens to authenticate users
@@ -54,15 +57,42 @@ namespace GameRoom.API
             //    consumerKey: "",
             //    consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //    appId: "",
-            //    appSecret: "");
+            app.UseFacebookAuthentication(
+                appId: "1503312323274248",
+                appSecret: "564b49d59fdfa6c19f57b3dc08094552");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
             //    ClientId = "",
             //    ClientSecret = ""
             //});
+        }
+    }
+
+    class t : AuthenticationTokenProvider
+    {
+        private readonly IDictionary<string, string> _Tokens; 
+
+        public t()
+        {
+            OnCreate = Create;
+            OnReceive = Receive;
+            _Tokens = new Dictionary<string, string>();
+        }
+
+        private void Receive(AuthenticationTokenReceiveContext authenticationTokenReceiveContext)
+        {
+            string ticket;
+            if (_Tokens.TryGetValue(authenticationTokenReceiveContext.Token, out ticket))
+            {
+                authenticationTokenReceiveContext.DeserializeTicket(ticket);
+            }
+        }
+
+        private void Create(AuthenticationTokenCreateContext authenticationTokenCreateContext)
+        {
+            authenticationTokenCreateContext.SetToken(Guid.NewGuid().ToString("n") + Guid.NewGuid().ToString("n"));
+            _Tokens[authenticationTokenCreateContext.Token] = authenticationTokenCreateContext.SerializeTicket();
         }
     }
 }
