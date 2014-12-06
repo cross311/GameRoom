@@ -58,6 +58,7 @@
     <Compile Include="Data\Models\PlayerState.cs" />
     <Compile Include="Data\Models\PlayerStatus.cs" />
     <Compile Include="Data\Models\TeamResult.cs" />
+    <Compile Include="IGameRoomApplication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

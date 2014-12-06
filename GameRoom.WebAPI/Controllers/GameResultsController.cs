@@ -13,22 +13,22 @@ namespace GameRoom.WebAPI.Controllers
 {
     public class GameResultsController : ApiController
     {
-        private readonly IGameResultRepository _GameResultRepository;
+        private readonly IGameRoomApplication _GameRoom;
 
         public GameResultsController()
-            : this(ResourceLocator.GameServiceData.GameResultRepository)
+            : this(ResourceLocator.GameRoomApplication)
         {
         }
 
-        public GameResultsController(IGameResultRepository gameResultRepository)
+        public GameResultsController(IGameRoomApplication gameRoom)
         {
-            _GameResultRepository = gameResultRepository;
+            _GameRoom = gameRoom;
         }
 
         // GET: GameResults
         public IEnumerable<GameResult> Get()
         {
-            var gameResults = _GameResultRepository.GetGameResults();
+            var gameResults = _GameRoom.GetGameResults();
 
             return gameResults.Select(ToWebApiModel);
         }
@@ -36,7 +36,7 @@ namespace GameRoom.WebAPI.Controllers
         // GET: GameResults/5
         public IEnumerable<GameResult> Get(int playerId)
         {
-            var gameResult = _GameResultRepository.GetGameResultsForPlayer(playerId);
+            var gameResult = _GameRoom.GetGameResultsForPlayer(playerId);
             return gameResult.Select(ToWebApiModel);
         }
 
@@ -44,7 +44,7 @@ namespace GameRoom.WebAPI.Controllers
         public GameResult Post(GameResult gameResult)
         {
             var request = ToServiceModel(0, gameResult);
-            var result = _GameResultRepository.RecordGameResults(request);
+            var result = _GameRoom.RecordGameResults(request);
             return ToWebApiModel(result);
         }
 
@@ -53,7 +53,7 @@ namespace GameRoom.WebAPI.Controllers
         {
             var request = ToServiceModel(id, gameResult);
 
-            var result = _GameResultRepository.UpdateGameResults(request);
+            var result = _GameRoom.UpdateGameResults(request);
             return ToWebApiModel(result);
         }
 

@@ -11,21 +11,21 @@ namespace GameRoom.WebAPI.Controllers
 {
     public class GameTypesController : ApiController
     {
-        private readonly IGameTypeRepository _GameTypeRepository;
+        private readonly IGameRoomApplication _GameRoom;
 
         public GameTypesController()
-            : this(ResourceLocator.GameServiceData.GameTypeRepository)
+            : this(ResourceLocator.GameRoomApplication)
         {
         }
 
-        public GameTypesController(IGameTypeRepository gameTypeRepository)
+        public GameTypesController(IGameRoomApplication gameRoom)
         {
-            _GameTypeRepository = gameTypeRepository;
+            _GameRoom = gameRoom;
         }
 
         public IEnumerable<GameType> Get()
         {
-            return _GameTypeRepository.GetGameTypes();
+            return _GameRoom.GetGameTypes();
         }
     }
 }

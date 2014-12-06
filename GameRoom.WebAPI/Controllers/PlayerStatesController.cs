@@ -8,22 +8,22 @@ namespace GameRoom.WebAPI.Controllers
 {
     public class PlayerStatesController : ApiController
     {
-        private readonly IPlayerStateRepository _PlayerStateRepository;
+        private readonly IGameRoomApplication _GameRoom;
 
         public PlayerStatesController()
-            : this(ResourceLocator.GameServiceData.PlayerStateRepository)
+            : this(ResourceLocator.GameRoomApplication)
         {
         }
 
-        public PlayerStatesController(IPlayerStateRepository playerStateRepository)
+        public PlayerStatesController(IGameRoomApplication gameRoom)
         {
-            _PlayerStateRepository = playerStateRepository;
+            _GameRoom = gameRoom;
         }
 
         // GET: PlayerStates
         public IEnumerable<string> Get()
         {
-            return _PlayerStateRepository.GetPossiblePlayerStates().Select(state => state.ToString());
+            return _GameRoom.GetPossiblePlayerStates();
         }
     }
 }
