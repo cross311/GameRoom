@@ -35,5 +35,11 @@ namespace GameRoom.GameService
         IGameRoomResponse<IEnumerable<PlayerStatus>> GetPlayerStatusesInState(PlayerState state);
 
         IGameRoomResponse<PlayerStatus> UpdatePlayerStatus(PlayerStatus playerStatus);
+
+        IGameResultService GameResult { get; }
+
+        IPlayerService Player { get; }
+
+        IPlayerStatusService PlayerStatus { get; }
     }
 }

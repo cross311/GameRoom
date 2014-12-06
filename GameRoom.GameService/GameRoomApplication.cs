@@ -7,15 +7,28 @@ using GameRoom.GameService.Response;
 
 namespace GameRoom.GameService
 {
-    public class GameRoomApplication : IGameRoomApplication
+    internal class GameRoomApplication : IGameRoomApplication
     {
         private readonly GameServiceDataRepository _GameServiceData;
+        private readonly IGameResultService _GameResultService;
+        private readonly IPlayerService _PlayerService;
+        private readonly IPlayerStatusService _PlayerStatusService;
 
-        public GameRoomApplication(Data.GameServiceDataRepository gameServiceData)
+        public GameRoomApplication(
+            Data.GameServiceDataRepository gameServiceData,
+            IGameResultService gameResultService,
+            IPlayerService playerService,
+            IPlayerStatusService playerStatusService)
         {
-            if(ReferenceEquals(gameServiceData, null)) throw new ArgumentNullException("gameServiceData");
+            if (ReferenceEquals(gameServiceData, null)) throw new ArgumentNullException("gameServiceData");
+            if (ReferenceEquals(gameResultService, null)) throw new ArgumentNullException("gameResultService");
+            if (ReferenceEquals(playerService, null)) throw new ArgumentNullException("playerService");
+            if (ReferenceEquals(playerStatusService, null)) throw new ArgumentNullException("playerStatusService");
 
             _GameServiceData = gameServiceData;
+            _GameResultService = gameResultService;
+            _PlayerService = playerService;
+            _PlayerStatusService = playerStatusService;
         }
 
         public IGameRoomResponse<IEnumerable<GameResult>> GetGameResults()
@@ -82,6 +95,22 @@ namespace GameRoom.GameService
         public IGameRoomResponse<PlayerStatus> UpdatePlayerStatus(PlayerStatus playerStatus)
         {
             return _GameServiceData.PlayerStatusRepository.UpdatePlayerStatus(playerStatus).Success();
+        }
+
+
+        public IGameResultService GameResult
+        {
+            get { return _GameResultService; }
+        }
+
+        public IPlayerService Player
+        {
+            get { return _PlayerService; }
+        }
+
+        public IPlayerStatusService PlayerStatus
+        {
+            get { return _PlayerStatusService; }
         }
     }
 }
