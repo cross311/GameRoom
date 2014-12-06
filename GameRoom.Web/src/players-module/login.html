@@ -11,3 +11,16 @@
         <button class="btn btn-lg" ng-hide="vm.authentication.isAuth" ng-click="vm.login(player)" >{{player.name + ' (' + player.email +')'}}</button>
     </li>
 </ul>
+
+<h3>Not Signed Up Yet?</h3>
+<form>
+    <div class="form-group">
+        <label for="#name">Name</label>
+        <input id="name" type="text" class="form-control" placeholder="Full name (ie: Connor Ross)" ng-model="vm.newPlayer.name">
+    </div>
+    <div class="form-group">
+        <label for="#email">Name</label>
+        <input id="email" type="email" class="form-control" placeholder="Email address (ie: blah@mdsol.com)" ng-model="vm.newPlayer.email">
+    </div>
+    <button type="submit" class="btn btn-primary" ng-click="vm.register(vm.newPlayer)">Register Your Player!</button>
+</form>

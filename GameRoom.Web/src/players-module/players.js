@@ -32,15 +32,26 @@ angular.module('gameroom.players', ['ui.router', 'gameroom.account'])
     });
 }])
 
-.controller('LoginCtrl', ['players', 'AccountSvc', function (players, accountSvc) {
+.controller('LoginCtrl', ['players', 'AccountSvc', 'PlayersSvc', function (players, accountSvc, playerSvc) {
     console.log('LoginCtrl Started');
     var vm = this;
     vm.players = players;
+    vm.newPlayer = {name: '', email: ''};
 
     vm.authentication = accountSvc.authentication;
 
     vm.login = function(player) {
         accountSvc.login(player);
+    };
+
+    vm.register = function(newPlayer) {
+        playerSvc.register(newPlayer).then(function (response) {
+            vm.newPlayer.name = '';
+            vm.newPlayer.email = '';
+            vm.players.push(response.data);
+        }, function(data) {
+            console.error(data);
+        });
     };
 }])
 .factory('PlayersSvc', ['$http', function($http) {
@@ -60,7 +71,22 @@ angular.module('gameroom.players', ['ui.router', 'gameroom.account'])
         });
     }
 
+    function _register(player) {
+        return $http.post('http://localhost:49269/players', player).
+        success(function (data) {
+            // this callback will be called asynchronously
+            // when the response is available
+            return data;
+        }).
+        error(function (data) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            return data;
+        });
+    }
+
     playersSvc.getPlayers = _getPlayers;
+    playersSvc.register = _register;
 
     return playersSvc;
 }]);

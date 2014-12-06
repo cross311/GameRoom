@@ -26,6 +26,7 @@
                         <a id="logout" class="btn btn-link" href="" ng-click="vm.logout()" ng-show="vm.authentication.isAuth">
                             <i class="glyphicon glyphicon-log-out"></i> Logout
                         </a>
+                        <!-- Hacky id to keep from having to mess with styles... Connor Bad -->
                         <a id="logout" class="btn btn-link" ui-sref="players.login" ng-hide="vm.authentication.isAuth">
                             <i class="glyphicon glyphicon-log-in"></i> Login
                         </a>
