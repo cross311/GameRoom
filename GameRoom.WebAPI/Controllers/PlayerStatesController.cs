@@ -11,7 +11,7 @@ namespace GameRoom.WebAPI.Controllers
         private readonly IPlayerStateRepository _PlayerStateRepository;
 
         public PlayerStatesController()
-            : this(ResourceLocator.PlayerStateRepository)
+            : this(ResourceLocator.GameServiceData.PlayerStateRepository)
         {
         }
 

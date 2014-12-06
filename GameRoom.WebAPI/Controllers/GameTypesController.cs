@@ -14,7 +14,7 @@ namespace GameRoom.WebAPI.Controllers
         private readonly IGameTypeRepository _GameTypeRepository;
 
         public GameTypesController()
-            : this(ResourceLocator.GameTypeRepository)
+            : this(ResourceLocator.GameServiceData.GameTypeRepository)
         {
         }
 

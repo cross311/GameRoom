@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace GameRoom.GameService.Data
 {
-    public class InMemoryPlayerStateRepository : IPlayerStateRepository
+    internal class InMemoryPlayerStateRepository : IPlayerStateRepository
     {
         private readonly PlayerState[] _PlayerStates;
 

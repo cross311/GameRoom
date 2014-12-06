@@ -16,7 +16,7 @@ namespace GameRoom.WebAPI.Controllers
         private readonly IGameResultRepository _GameResultRepository;
 
         public GameResultsController()
-            : this(ResourceLocator.GameResultRepository)
+            : this(ResourceLocator.GameServiceData.GameResultRepository)
         {
         }
 
