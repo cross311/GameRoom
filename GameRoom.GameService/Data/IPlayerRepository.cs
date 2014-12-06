@@ -2,7 +2,7 @@
 
 namespace GameRoom.GameService.Data
 {
-    public interface IPlayerRegistration
+    public interface IPlayerRepository
     {
         Player RegisterPlayer(PlayerRegistration playerRegistration);
 

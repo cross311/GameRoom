@@ -3,11 +3,11 @@ using System.Linq;
 
 namespace GameRoom.GameService.Data
 {
-    public class InMemoryPlayerRegistration : IPlayerRegistration
+    public class InMemoryPlayerRepository : IPlayerRepository
     {
         private readonly IList<Player> _Players;
 
-        public InMemoryPlayerRegistration()
+        public InMemoryPlayerRepository()
         {
             _Players = new List<Player>();
         }

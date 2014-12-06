@@ -11,22 +11,22 @@ namespace GameRoom.WebAPI.Controllers
 {
     public class PlayersController : ApiController
     {
-        private readonly IPlayerRegistration _PlayerRegistration;
+        private readonly IPlayerRepository _PlayerRepository;
 
         public PlayersController()
-            : this(ResourceLocator.PlayerRegistration)
+            : this(ResourceLocator.PlayerRepository)
         {
         }
 
-        public PlayersController(IPlayerRegistration playerRegistration)
+        public PlayersController(IPlayerRepository playerRepository)
         {
-            _PlayerRegistration = playerRegistration;
+            _PlayerRepository = playerRepository;
         }
 
         // GET: Players
         public IEnumerable<Player> Get()
         {
-            var players = _PlayerRegistration.GetPlayers();
+            var players = _PlayerRepository.GetPlayers();
 
             return players;
         }
@@ -35,7 +35,7 @@ namespace GameRoom.WebAPI.Controllers
         public Player Get(int id)
         {
             var accessToken = new AccessToken(id);
-            var player = _PlayerRegistration.GetPlayerForAccessToken(accessToken);
+            var player = _PlayerRepository.GetPlayerForAccessToken(accessToken);
 
             return player;
         }
@@ -43,7 +43,7 @@ namespace GameRoom.WebAPI.Controllers
         // POST: Players
         public Player Post(PlayerRegistration registration)
         {
-            var player = _PlayerRegistration.RegisterPlayer(registration);
+            var player = _PlayerRepository.RegisterPlayer(registration);
 
             return player;
         }
