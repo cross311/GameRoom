@@ -39,11 +39,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\AccessToken.cs" />
     <Compile Include="Data\GameResult.cs" />
     <Compile Include="Data\GameType.cs" />
+    <Compile Include="Data\IGameResultRepository.cs" />
+    <Compile Include="Data\InMemoryGameResultRepository.cs" />
+    <Compile Include="Data\InMemoryPlayerRegistration.cs" />
+    <Compile Include="Data\InMemoryPlayerStateRepository.cs" />
+    <Compile Include="Data\InMemoryPlayerStatusRepository.cs" />
+    <Compile Include="Data\IPlayerRegistration.cs" />
+    <Compile Include="Data\IPlayerStateRepository.cs" />
+    <Compile Include="Data\IPlayerStatusRepository.cs" />
+    <Compile Include="Data\Player.cs" />
     <Compile Include="Data\PlayerRegistration.cs" />
     <Compile Include="Data\PlayerState.cs" />
     <Compile Include="Data\PlayerStatus.cs" />
+    <Compile Include="Data\TeamResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
