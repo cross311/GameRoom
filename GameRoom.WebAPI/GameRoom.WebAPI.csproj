@@ -173,6 +173,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\GameResultsController.cs" />
+    <Compile Include="Controllers\GameRoomResponseExtension.cs" />
     <Compile Include="Controllers\GameTypesController.cs" />
     <Compile Include="Controllers\PlayersController.cs" />
     <Compile Include="Controllers\PlayerStatesController.cs" />

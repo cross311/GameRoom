@@ -58,7 +58,15 @@
     <Compile Include="Data\Models\PlayerState.cs" />
     <Compile Include="Data\Models\PlayerStatus.cs" />
     <Compile Include="Data\Models\TeamResult.cs" />
+    <Compile Include="Response\ExecutionFailureTypeEnum.cs" />
+    <Compile Include="GameRoomApplication.cs" />
+    <Compile Include="Response\GameRoomFailureReason.cs" />
+    <Compile Include="Response\GameRoomFailureResponse.cs" />
+    <Compile Include="Response\GameRoomResponseExtension.cs" />
+    <Compile Include="Response\GameRoomSuccessfulResponse.cs" />
     <Compile Include="IGameRoomApplication.cs" />
+    <Compile Include="Response\IGameRoomFailureReason.cs" />
+    <Compile Include="Response\IGameRoomResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

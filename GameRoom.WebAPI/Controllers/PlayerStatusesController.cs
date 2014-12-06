@@ -27,27 +27,27 @@ namespace GameRoom.WebAPI.Controllers
         // GET: PlayerStatuses
         public IEnumerable<PlayerStatus> Get()
         {
-            return _GameRoom.GetPlayerStatuses().Select(ToWebApiModel);
+            return _GameRoom.GetPlayerStatuses().HandleFailure(Request).Select(ToWebApiModel);
         }
 
         // GET: PlayerStatuses/5
         public PlayerStatus Get(int id)
         {
-            var result = _GameRoom.GetPlayerStatusForPlayer(id);
+            var result = _GameRoom.GetPlayerStatusForPlayer(id).HandleFailure(Request);
             return ToWebApiModel(result);
         }
 
         // GET: PlayerStatuses?state=availble
         public IEnumerable<PlayerStatus> Get(PlayerState state)
         {
-            return _GameRoom.GetPlayerStatusesInState(state).Select(ToWebApiModel);
+            return _GameRoom.GetPlayerStatusesInState(state).HandleFailure(Request).Select(ToWebApiModel);
         }
 
         // POST: PlayerStatuses
         public PlayerStatus Post(PlayerStatus playerStatus)
         {
             var request = ToServiceModel(playerStatus);
-            var result = _GameRoom.UpdatePlayerStatus(request);
+            var result = _GameRoom.UpdatePlayerStatus(request).HandleFailure(Request);
             return ToWebApiModel(result);
         }
 

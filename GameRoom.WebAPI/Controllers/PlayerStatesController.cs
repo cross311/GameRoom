@@ -23,7 +23,7 @@ namespace GameRoom.WebAPI.Controllers
         // GET: PlayerStates
         public IEnumerable<string> Get()
         {
-            return _GameRoom.GetPossiblePlayerStates();
+            return _GameRoom.GetPossiblePlayerStates().HandleFailure(Request);
         }
     }
 }

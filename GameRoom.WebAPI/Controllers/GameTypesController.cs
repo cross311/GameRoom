@@ -25,7 +25,7 @@ namespace GameRoom.WebAPI.Controllers
 
         public IEnumerable<GameType> Get()
         {
-            return _GameRoom.GetGameTypes();
+            return _GameRoom.GetGameTypes().HandleFailure(Request);
         }
     }
 }

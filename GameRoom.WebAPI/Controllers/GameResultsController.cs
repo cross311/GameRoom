@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 using GameRoom.GameService;
 using GameRoom.GameService.Data;
@@ -28,7 +27,7 @@ namespace GameRoom.WebAPI.Controllers
         // GET: GameResults
         public IEnumerable<GameResult> Get()
         {
-            var gameResults = _GameRoom.GetGameResults();
+            var gameResults = _GameRoom.GetGameResults().HandleFailure(Request);
 
             return gameResults.Select(ToWebApiModel);
         }
@@ -36,7 +35,7 @@ namespace GameRoom.WebAPI.Controllers
         // GET: GameResults/5
         public IEnumerable<GameResult> Get(int playerId)
         {
-            var gameResult = _GameRoom.GetGameResultsForPlayer(playerId);
+            var gameResult = _GameRoom.GetGameResultsForPlayer(playerId).HandleFailure(Request);
             return gameResult.Select(ToWebApiModel);
         }
 
@@ -44,7 +43,7 @@ namespace GameRoom.WebAPI.Controllers
         public GameResult Post(GameResult gameResult)
         {
             var request = ToServiceModel(0, gameResult);
-            var result = _GameRoom.RecordGameResults(request);
+            var result = _GameRoom.RecordGameResults(request).HandleFailure(Request);
             return ToWebApiModel(result);
         }
 
@@ -53,7 +52,7 @@ namespace GameRoom.WebAPI.Controllers
         {
             var request = ToServiceModel(id, gameResult);
 
-            var result = _GameRoom.UpdateGameResults(request);
+            var result = _GameRoom.UpdateGameResults(request).HandleFailure(Request);
             return ToWebApiModel(result);
         }
 

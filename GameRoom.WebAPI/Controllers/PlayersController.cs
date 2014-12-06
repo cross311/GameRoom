@@ -27,7 +27,7 @@ namespace GameRoom.WebAPI.Controllers
         // GET: Players
         public IEnumerable<Player> Get()
         {
-            var players = _GameRoom.GetPlayers();
+            var players = _GameRoom.GetPlayers().HandleFailure(Request);
 
             return players.Select(ToWebApiModel);
         }
@@ -36,7 +36,7 @@ namespace GameRoom.WebAPI.Controllers
         public Player Get(int id)
         {
             var accessToken = new AccessToken(id);
-            var player = _GameRoom.GetPlayerForAccessToken(accessToken);
+            var player = _GameRoom.GetPlayerForAccessToken(accessToken).HandleFailure(Request);
 
             return ToWebApiModel(player);
         }
@@ -45,7 +45,7 @@ namespace GameRoom.WebAPI.Controllers
         public Player Post(Player player)
         {
             var request = ToServiceModel(player);
-            var result = _GameRoom.RegisterPlayer(request);
+            var result = _GameRoom.RegisterPlayer(request).HandleFailure(Request);
 
             return ToWebApiModel(result);
         }
