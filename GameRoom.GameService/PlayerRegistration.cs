@@ -1,16 +1,17 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace GameRoom.GameService
 {
     public class PlayerRegistration
     {
-        private readonly PlayerExternalProviderIdentity _ExternalProviderIdentity;
         private readonly string _Email;
         private readonly string _Name;
 
-        public PlayerRegistration(PlayerExternalProviderIdentity externalProviderIdentity, string email, string name)
+        public PlayerRegistration(string email, string name)
         {
-            _ExternalProviderIdentity = externalProviderIdentity;
             _Email = email;
             _Name = name;
         }
@@ -23,55 +24,6 @@ namespace GameRoom.GameService
         public string Name
         {
             get { return _Name; }
-        }
-
-        public PlayerExternalProviderIdentity ExternalProviderIdentity
-        {
-            get { return _ExternalProviderIdentity; }
-        }
-    }
-
-    public class PlayerAdditionalExternalProviderRegistration
-    {
-        private readonly PlayerExternalProviderIdentity _ExternalProviderIdentity;
-        private readonly int _Player;
-
-        public PlayerAdditionalExternalProviderRegistration(int player, PlayerExternalProviderIdentity externalProviderIdentity)
-        {
-            _ExternalProviderIdentity = externalProviderIdentity;
-            _Player = player;
-        }
-
-        public PlayerExternalProviderIdentity ExternalProviderIdentity
-        {
-            get { return _ExternalProviderIdentity; }
-        }
-
-        public int Player
-        {
-            get { return _Player; }
-        }
-    }
-
-    public class PlayerExternalProviderIdentity
-    {
-        private readonly string _Provider;
-        private readonly string _ProviderUserIdentifier;
-
-        public PlayerExternalProviderIdentity(string provider, string providerUserIdentifier)
-        {
-            _Provider = provider;
-            _ProviderUserIdentifier = providerUserIdentifier;
-        }
-
-        public string Provider
-        {
-            get { return _Provider; }
-        }
-
-        public string ProviderUserIdentifier
-        {
-            get { return _ProviderUserIdentifier; }
         }
     }
 
@@ -106,61 +58,56 @@ namespace GameRoom.GameService
 
     public class AccessToken
     {
-        private readonly string _Token;
+        private readonly int _PlayerId;
 
-        public AccessToken(string token)
+        public AccessToken(int playerId)
         {
-            _Token = token;
+            _PlayerId = playerId;
         }
 
-        public string Token
+        public int PlayerId
         {
-            get { return _Token; }
-        }
-    }
-
-    public class PlayerAccessToken
-    {
-        private readonly AccessToken _AccessToken;
-        private readonly String _Ticket;
-        private readonly DateTime _IssuedAt;
-        private readonly DateTime _ExpiresAt;
-
-        public PlayerAccessToken(AccessToken accessToken, string ticket, DateTime issuedAt, DateTime expiresAt)
-        {
-            _AccessToken = accessToken;
-            _Ticket = ticket;
-            _IssuedAt = issuedAt;
-            _ExpiresAt = expiresAt;
-        }
-
-        public AccessToken AccessToken
-        {
-            get { return _AccessToken; }
-        }
-
-        public DateTime IssuedAt
-        {
-            get { return _IssuedAt; }
-        }
-
-        public DateTime ExpiresAt
-        {
-            get { return _ExpiresAt; }
-        }
-
-        public string Ticket
-        {
-            get { return _Ticket; }
+            get { return _PlayerId; }
         }
     }
+
 
     public interface IPlayerRegistration
     {
         Player RegisterPlayer(PlayerRegistration playerRegistration);
-        
-        PlayerAccessToken GetAccessTokenForPlayer(Player player);
+
+        IEnumerable<Player> GetPlayers();
 
         Player GetPlayerForAccessToken(AccessToken accessToken);
+    }
+
+    public class InMemoryPlayerRegistration : IPlayerRegistration
+    {
+        private readonly IList<Player> _Players;
+
+        public InMemoryPlayerRegistration()
+        {
+            _Players = new List<Player>();
+        }
+
+        public Player RegisterPlayer(PlayerRegistration playerRegistration)
+        {
+            var newPlayer = new Player(_Players.Count + 1, playerRegistration.Name, playerRegistration.Email);
+
+            _Players.Add(newPlayer);
+
+            return newPlayer;
+        }
+
+        public IEnumerable<Player> GetPlayers()
+        {
+            return _Players;
+        }
+
+        public Player GetPlayerForAccessToken(AccessToken accessToken)
+        {
+            var player = _Players.SingleOrDefault(p => p.Id == accessToken.PlayerId);
+            return player;
+        }
     }
 }
