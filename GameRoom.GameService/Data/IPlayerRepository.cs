@@ -4,7 +4,7 @@ namespace GameRoom.GameService.Data
 {
     public interface IPlayerRepository
     {
-        Player RegisterPlayer(PlayerRegistration playerRegistration);
+        Player RegisterPlayer(Player player);
 
         IEnumerable<Player> GetPlayers();
 

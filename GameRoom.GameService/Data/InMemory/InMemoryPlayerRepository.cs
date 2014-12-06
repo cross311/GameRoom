@@ -12,9 +12,9 @@ namespace GameRoom.GameService.Data
             _Players = new List<Player>();
         }
 
-        public Player RegisterPlayer(PlayerRegistration playerRegistration)
+        public Player RegisterPlayer(Player player)
         {
-            var newPlayer = new Player(_Players.Count + 1, playerRegistration.Name, playerRegistration.Email);
+            var newPlayer = new Player(_Players.Count + 1, player.Name, player.Email);
 
             _Players.Add(newPlayer);
 

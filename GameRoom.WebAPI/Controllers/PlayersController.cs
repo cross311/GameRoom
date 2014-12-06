@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using GameRoom.GameService;
 using GameRoom.GameService.Data;
+using Player = GameRoom.WebAPI.Models.Player;
 
 namespace GameRoom.WebAPI.Controllers
 {
@@ -28,7 +29,7 @@ namespace GameRoom.WebAPI.Controllers
         {
             var players = _PlayerRepository.GetPlayers();
 
-            return players;
+            return players.Select(ToWebApiModel);
         }
 
         // GET: Players/5
@@ -37,15 +38,34 @@ namespace GameRoom.WebAPI.Controllers
             var accessToken = new AccessToken(id);
             var player = _PlayerRepository.GetPlayerForAccessToken(accessToken);
 
-            return player;
+            return ToWebApiModel(player);
         }
 
         // POST: Players
-        public Player Post(PlayerRegistration registration)
+        public Player Post(Player player)
         {
-            var player = _PlayerRepository.RegisterPlayer(registration);
+            var request = ToServiceModel(player);
+            var result = _PlayerRepository.RegisterPlayer(request);
 
-            return player;
+            return ToWebApiModel(result);
+        }
+
+
+
+        private static GameService.Data.Player ToServiceModel(Player player)
+        {
+            var request = new GameService.Data.Player(player.Name, player.Email);
+            return request;
+        }
+
+        private static Player ToWebApiModel(GameService.Data.Player result)
+        {
+            return new Player
+            {
+                Id = result.Id,
+                Name = result.Name,
+                Email = result.Email
+            };
         }
     }
 }

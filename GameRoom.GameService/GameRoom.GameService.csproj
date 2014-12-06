@@ -55,7 +55,6 @@
     <Compile Include="Data\IPlayerStateRepository.cs" />
     <Compile Include="Data\IPlayerStatusRepository.cs" />
     <Compile Include="Data\Models\Player.cs" />
-    <Compile Include="Data\Models\PlayerRegistration.cs" />
     <Compile Include="Data\Models\PlayerState.cs" />
     <Compile Include="Data\Models\PlayerStatus.cs" />
     <Compile Include="Data\Models\TeamResult.cs" />
