@@ -178,6 +178,8 @@
     <Compile Include="Controllers\PlayerStatesController.cs" />
     <Compile Include="Controllers\PlayerStatusesController.cs" />
     <Compile Include="Models\GameResult.cs" />
+    <Compile Include="Models\PlayerStatus.cs" />
+    <Compile Include="Models\TeamResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResourceLocator.cs" />
     <Compile Include="Startup.cs" />

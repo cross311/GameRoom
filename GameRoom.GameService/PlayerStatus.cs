@@ -64,25 +64,23 @@ namespace GameRoom.GameService
 
         public IEnumerable<PlayerStatus> GetPlayerStatuses()
         {
-            return _PlayerStatuses;
-        }
-
-        public PlayerStatus GetPlayerStatusForPlayer(int player)
-        {
-            return _PlayerStatuses
-                .Where(status => status.Player == player)
-                .OrderByDescending(status => status.Reported)
-                .FirstOrDefault();
-        }
-
-        public IEnumerable<PlayerStatus> GetPlayerStatusesInState(PlayerState playerState)
-        {
             return _PlayerStatuses
                 .GroupBy(status => status.Player)
                 .Select(playerStatuses =>
                     playerStatuses
                         .OrderByDescending(status => status.Reported)
-                        .FirstOrDefault())
+                        .FirstOrDefault());
+        }
+
+        public PlayerStatus GetPlayerStatusForPlayer(int player)
+        {
+            return GetPlayerStatuses()
+                    .FirstOrDefault(status => status.Player == player);
+        }
+
+        public IEnumerable<PlayerStatus> GetPlayerStatusesInState(PlayerState playerState)
+        {
+            return GetPlayerStatuses()
                 .Where(status => status.State == playerState);
         }
 
