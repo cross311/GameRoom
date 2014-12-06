@@ -13,10 +13,9 @@ namespace GameRoom.WebAPI.Controllers
     public class GameResultsController : ApiController
     {
         private readonly IGameResultRepository _GameResultRepository;
-        private static readonly InMemoryGameResultRepository _inMemoryGameResultRepository = new InMemoryGameResultRepository();
 
         public GameResultsController()
-            : this(_inMemoryGameResultRepository)
+            : this(ResourceLocator.GameResultRepository)
         {
         }
 

@@ -10,13 +10,11 @@ namespace GameRoom.WebAPI.Controllers
 {
     public class PlayersController : ApiController
     {
-        private static readonly InMemoryPlayerRegistration _InMemoryPlayerRegistration = new InMemoryPlayerRegistration();
         private readonly IPlayerRegistration _PlayerRegistration;
 
         public PlayersController()
-            : this(_InMemoryPlayerRegistration)
+            : this(ResourceLocator.PlayerRegistration)
         {
-            
         }
 
         public PlayersController(IPlayerRegistration playerRegistration)

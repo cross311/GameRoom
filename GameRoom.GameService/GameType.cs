@@ -17,14 +17,34 @@ namespace GameRoom.GameService
         }
 
         public static GameType Foosball = new GameType("Foosball");
-        public static GameType Pool = new GameType("Pool");
-        public static GameType Fifa = new GameType("Fifa");
+        public static GameType Pool =     new GameType("Pool");
+        public static GameType Fifa =     new GameType("Fifa");
     }
 
 
 
     public interface IGameTypeRepository
     {
-        IList<GameType> GetGameTypes();
+        IEnumerable<GameType> GetGameTypes();
+    }
+
+    public class InMemoryGameTypeRespository : IGameTypeRepository
+    {
+        private readonly GameType[] _GameTypes;
+
+        public InMemoryGameTypeRespository()
+        {
+            _GameTypes = new []
+            {
+                new GameType("Foosball"),
+                new GameType("Pool"),
+                new GameType("Fifa")
+            };
+        }
+
+        public IEnumerable<GameType> GetGameTypes()
+        {
+            return _GameTypes;
+        }
     }
 }
