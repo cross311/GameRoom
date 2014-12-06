@@ -1,7 +1,6 @@
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using GameRoom.GameService;
 using GameRoom.GameService.Response;
 
 namespace GameRoom.WebAPI.Controllers

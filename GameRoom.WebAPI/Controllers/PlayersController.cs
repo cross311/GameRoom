@@ -13,22 +13,17 @@ namespace GameRoom.WebAPI.Controllers
 {
     public class PlayersController : ApiController
     {
-        private readonly IGameRoomApplication _GameRoom;
-
-        public PlayersController()
-            : this(ResourceLocator.GameRoomApplication)
-        {
-        }
+        private readonly IPlayerService _PlayerService;
 
         public PlayersController(IGameRoomApplication gameRoom)
         {
-            _GameRoom = gameRoom;
+            _PlayerService = gameRoom.Player;
         }
 
         // GET: Players
         public IEnumerable<Player> Get()
         {
-            var players = _GameRoom.GetPlayers().HandleFailure(Request);
+            var players = _PlayerService.All().HandleFailure(Request);
 
             return players.Select(ToWebApiModel);
         }
@@ -37,7 +32,7 @@ namespace GameRoom.WebAPI.Controllers
         public Player Get(int id)
         {
             var accessToken = new AccessToken(id);
-            var player = _GameRoom.GetPlayerForAccessToken(accessToken).HandleFailure(Request);
+            var player = _PlayerService.ForAccessToken(accessToken).HandleFailure(Request);
 
             return ToWebApiModel(player);
         }
@@ -46,7 +41,7 @@ namespace GameRoom.WebAPI.Controllers
         public Player Post(Player player)
         {
             var request = ToServiceModel(player);
-            var result = _GameRoom.RegisterPlayer(request).HandleFailure(Request);
+            var result = _PlayerService.Register(request).HandleFailure(Request);
 
             return ToWebApiModel(result);
         }

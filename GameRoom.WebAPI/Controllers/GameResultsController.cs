@@ -12,22 +12,17 @@ namespace GameRoom.WebAPI.Controllers
 {
     public class GameResultsController : ApiController
     {
-        private readonly IGameRoomApplication _GameRoom;
-
-        public GameResultsController()
-            : this(ResourceLocator.GameRoomApplication)
-        {
-        }
+        private readonly IGameResultService _GameResultService;
 
         public GameResultsController(IGameRoomApplication gameRoom)
         {
-            _GameRoom = gameRoom;
+            _GameResultService = gameRoom.GameResult;
         }
 
         // GET: GameResults
         public IEnumerable<GameResult> Get()
         {
-            var gameResults = _GameRoom.GetGameResults().HandleFailure(Request);
+            var gameResults = _GameResultService.All().HandleFailure(Request);
 
             return gameResults.Select(ToWebApiModel);
         }
@@ -35,7 +30,7 @@ namespace GameRoom.WebAPI.Controllers
         // GET: GameResults/5
         public IEnumerable<GameResult> Get(int playerId)
         {
-            var gameResult = _GameRoom.GetGameResultsForPlayer(playerId).HandleFailure(Request);
+            var gameResult = _GameResultService.AllForPlayer(playerId).HandleFailure(Request);
             return gameResult.Select(ToWebApiModel);
         }
 
@@ -43,7 +38,7 @@ namespace GameRoom.WebAPI.Controllers
         public GameResult Post(GameResult gameResult)
         {
             var request = ToServiceModel(0, gameResult);
-            var result = _GameRoom.RecordGameResults(request).HandleFailure(Request);
+            var result = _GameResultService.Record(request).HandleFailure(Request);
             return ToWebApiModel(result);
         }
 
@@ -52,7 +47,7 @@ namespace GameRoom.WebAPI.Controllers
         {
             var request = ToServiceModel(id, gameResult);
 
-            var result = _GameRoom.UpdateGameResults(request).HandleFailure(Request);
+            var result = _GameResultService.Update(request).HandleFailure(Request);
             return ToWebApiModel(result);
         }
 

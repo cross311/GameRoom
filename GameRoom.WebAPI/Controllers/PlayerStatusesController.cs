@@ -13,42 +13,37 @@ namespace GameRoom.WebAPI.Controllers
 {
     public class PlayerStatusesController : ApiController
     {
-        private readonly IGameRoomApplication _GameRoom;
-
-        public PlayerStatusesController()
-            : this(ResourceLocator.GameRoomApplication)
-        {
-        }
+        private readonly IPlayerStatusService _PlayerStatusService;
 
         public PlayerStatusesController(IGameRoomApplication gameRoom)
         {
-            _GameRoom = gameRoom;
+            _PlayerStatusService = gameRoom.PlayerStatus;
         }
 
         // GET: PlayerStatuses
         public IEnumerable<PlayerStatus> Get()
         {
-            return _GameRoom.GetPlayerStatuses().HandleFailure(Request).Select(ToWebApiModel);
+            return _PlayerStatusService.All().HandleFailure(Request).Select(ToWebApiModel);
         }
 
         // GET: PlayerStatuses/5
         public PlayerStatus Get(int id)
         {
-            var result = _GameRoom.GetPlayerStatusForPlayer(id).HandleFailure(Request);
+            var result = _PlayerStatusService.ForPlayer(id).HandleFailure(Request);
             return ToWebApiModel(result);
         }
 
         // GET: PlayerStatuses?state=availble
         public IEnumerable<PlayerStatus> Get(PlayerState state)
         {
-            return _GameRoom.GetPlayerStatusesInState(state).HandleFailure(Request).Select(ToWebApiModel);
+            return _PlayerStatusService.AllInState(state).HandleFailure(Request).Select(ToWebApiModel);
         }
 
         // POST: PlayerStatuses
         public PlayerStatus Post(PlayerStatus playerStatus)
         {
             var request = ToServiceModel(playerStatus);
-            var result = _GameRoom.UpdatePlayerStatus(request).HandleFailure(Request);
+            var result = _PlayerStatusService.Update(request).HandleFailure(Request);
             return ToWebApiModel(result);
         }
 

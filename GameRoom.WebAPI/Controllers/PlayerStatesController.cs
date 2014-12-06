@@ -8,22 +8,17 @@ namespace GameRoom.WebAPI.Controllers
 {
     public class PlayerStatesController : ApiController
     {
-        private readonly IGameRoomApplication _GameRoom;
-
-        public PlayerStatesController()
-            : this(ResourceLocator.GameRoomApplication)
-        {
-        }
+        private readonly IPlayerService _PlayerService;
 
         public PlayerStatesController(IGameRoomApplication gameRoom)
         {
-            _GameRoom = gameRoom;
+            _PlayerService = gameRoom.Player;
         }
 
         // GET: PlayerStates
         public IEnumerable<string> Get()
         {
-            return _GameRoom.GetPossiblePlayerStates().HandleFailure(Request);
+            return _PlayerService.AvailableStates().HandleFailure(Request);
         }
     }
 }
