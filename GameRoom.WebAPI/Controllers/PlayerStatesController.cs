@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using GameRoom.GameService;
+using GameRoom.GameService.Data;
 
 namespace GameRoom.WebAPI.Controllers
 {

@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using GameRoom.GameService;
+using GameRoom.GameService.Data;
 using GameResult = GameRoom.WebAPI.Models.GameResult;
 using TeamResult = GameRoom.WebAPI.Models.TeamResult;
 
@@ -56,15 +57,15 @@ namespace GameRoom.WebAPI.Controllers
             return ToWebApiModel(result);
         }
 
-        private static GameService.GameResult ToServiceModel(int id, GameResult gameResult)
+        private static GameService.Data.GameResult ToServiceModel(int id, GameResult gameResult)
         {
-            var team1Result = new GameService.TeamResult(gameResult.Team1.Score, gameResult.Team1.Players);
-            var team2Result = new GameService.TeamResult(gameResult.Team2.Score, gameResult.Team2.Players);
-            var request = new GameService.GameResult(id, gameResult.GameType, team1Result, team2Result);
+            var team1Result = new GameService.Data.TeamResult(gameResult.Team1.Score, gameResult.Team1.Players);
+            var team2Result = new GameService.Data.TeamResult(gameResult.Team2.Score, gameResult.Team2.Players);
+            var request = new GameService.Data.GameResult(id, gameResult.GameType, team1Result, team2Result);
             return request;
         }
 
-        private static GameResult ToWebApiModel(GameService.GameResult result)
+        private static GameResult ToWebApiModel(GameService.Data.GameResult result)
         {
             return new GameResult
             {

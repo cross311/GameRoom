@@ -39,11 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GameResult.cs" />
-    <Compile Include="GameType.cs" />
-    <Compile Include="PlayerRegistration.cs" />
-    <Compile Include="PlayerState.cs" />
-    <Compile Include="PlayerStatus.cs" />
+    <Compile Include="Data\GameResult.cs" />
+    <Compile Include="Data\GameType.cs" />
+    <Compile Include="Data\PlayerRegistration.cs" />
+    <Compile Include="Data\PlayerState.cs" />
+    <Compile Include="Data\PlayerStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

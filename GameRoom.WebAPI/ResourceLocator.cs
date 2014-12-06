@@ -1,4 +1,5 @@
 ﻿using GameRoom.GameService;
+using GameRoom.GameService.Data;
 
 namespace GameRoom.WebAPI
 {
