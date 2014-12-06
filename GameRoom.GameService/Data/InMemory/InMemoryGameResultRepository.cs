@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace GameRoom.GameService.Data
 {
-    public class InMemoryGameResultRepository : IGameResultRepository
+    internal class InMemoryGameResultRepository : IGameResultRepository
     {
         private readonly IList<GameResult> _GameResults;
 

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace GameRoom.GameService.Data
+﻿namespace GameRoom.GameService.Data
 {
     public class GameType
     {
@@ -19,32 +17,5 @@ namespace GameRoom.GameService.Data
         public static GameType Foosball = new GameType("Foosball");
         public static GameType Pool =     new GameType("Pool");
         public static GameType Fifa =     new GameType("Fifa");
-    }
-
-
-
-    public interface IGameTypeRepository
-    {
-        IEnumerable<GameType> GetGameTypes();
-    }
-
-    public class InMemoryGameTypeRespository : IGameTypeRepository
-    {
-        private readonly GameType[] _GameTypes;
-
-        public InMemoryGameTypeRespository()
-        {
-            _GameTypes = new []
-            {
-                new GameType("Foosball"),
-                new GameType("Pool"),
-                new GameType("Fifa")
-            };
-        }
-
-        public IEnumerable<GameType> GetGameTypes()
-        {
-            return _GameTypes;
-        }
     }
 }

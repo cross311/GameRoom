@@ -39,9 +39,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\IDataRepositoryFactory.cs" />
+    <Compile Include="Data\Models\GameType.cs" />
+    <Compile Include="Data\IGameTypeRepository.cs" />
+    <Compile Include="Data\InMemory\InMemoryDataRepositoryFactory.cs" />
+    <Compile Include="Data\InMemory\InMemoryGameTypeRespository.cs" />
     <Compile Include="Data\Models\AccessToken.cs" />
     <Compile Include="Data\Models\GameResult.cs" />
-    <Compile Include="Data\Models\GameType.cs" />
     <Compile Include="Data\IGameResultRepository.cs" />
     <Compile Include="Data\InMemory\InMemoryGameResultRepository.cs" />
     <Compile Include="Data\InMemory\InMemoryPlayerRepository.cs" />

@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace GameRoom.GameService.Data
 {
-    public class InMemoryPlayerStatusRepository : IPlayerStatusRepository
+    internal class InMemoryPlayerStatusRepository : IPlayerStatusRepository
     {
         private readonly IList<PlayerStatus> _PlayerStatuses;
 

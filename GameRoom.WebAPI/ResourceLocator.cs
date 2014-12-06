@@ -5,10 +5,11 @@ namespace GameRoom.WebAPI
 {
     internal static class ResourceLocator
     {
-        public readonly static IPlayerRepository PlayerRepository = new InMemoryPlayerRepository();
-        public readonly static IGameResultRepository GameResultRepository = new InMemoryGameResultRepository();
-        public readonly static IGameTypeRepository GameTypeRepository = new InMemoryGameTypeRespository();
-        public readonly static IPlayerStatusRepository PlayerStatusRepository = new InMemoryPlayerStatusRepository();
+        private static readonly IDataRepositoryFactory _DataRepositoryFactory = new InMemoryDataRepositoryFactory();
+        public readonly static IPlayerRepository PlayerRepository = _DataRepositoryFactory.BuildPlayerRepository();
+        public readonly static IGameResultRepository GameResultRepository = _DataRepositoryFactory.BuildGameResultRepository();
+        public readonly static IGameTypeRepository GameTypeRepository = _DataRepositoryFactory.BuildGameTypeRepository();
+        public readonly static IPlayerStatusRepository PlayerStatusRepository = _DataRepositoryFactory.BuildPlayerStatusRepository();
         public readonly static IPlayerStateRepository PlayerStateRepository = new InMemoryPlayerStateRepository();
     }
 }
