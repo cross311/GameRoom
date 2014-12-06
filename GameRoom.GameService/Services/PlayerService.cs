@@ -5,7 +5,7 @@ using GameRoom.GameService.Data;
 using GameRoom.GameService.Data.Models;
 using GameRoom.GameService.Response;
 
-namespace GameRoom.GameService
+namespace GameRoom.GameService.Services
 {
     internal class PlayerService : IPlayerService
     {

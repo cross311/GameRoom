@@ -1,5 +1,6 @@
 using System;
 using GameRoom.GameService.Data;
+using GameRoom.GameService.Services;
 
 namespace GameRoom.GameService
 {
