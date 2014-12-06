@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" class='no-js'>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content='IE=edge' http-equiv='X-UA-Compatible'>
+  <meta charset='utf-8'>
+  <title>Support Portal</title>
+  <link rel="stylesheet" href="css/platform.css">
+  <link rel="stylesheet" href="css/main<%= cssFileExt %>">
+  <script src="js/modernizr.js"></script>
+</head>
+<body>
+  <header id="header" class="clearfix">
+    <div class="logos">
+      <span class="mcc-logo"><img alt="Medidata_logo" height="24" src="css/Medidata_Logo.png" width="164" /> </span>
+    </div>
+    <div class="pull-right header-controls">
+      <div id="help" class="btn-group">
+          <a class="btn btn-link" href="#help_url">
+            <i class="fa fa-question-circle"></i> Help
+          </a>
+      </div>
+
+      <div id="user" class="btn-group">
+        <a class="btn btn-link" href="#" data-toggle="dropdown">
+          <i class="fa fa-user"></i>
+          Support Portal
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" id="user-dropdown">
+          <li>
+            <a id="logout" class="btn btn-link" href="logout">
+              <i class="glyphicon glyphicon-log-out"></i> Logout
+            </a>
+          </li>
+        </ul>
+        
+      </div>
+    </div>
+  </header>
+  <nav id="navigation" class="clearfix" role="navigation">
+    <a class="home" href="/">
+        <i class="fa fa-home"></i>
+      <span class="sr-only">
+        Home
+      </span>
+    </a>
+    <ul class="list-unstyled">
+    </ul>
+  </nav>
+  <div id="main" ng-app="supportPortal">
+      <div ng-view></div>
+  </div>
+  <script>
+    window.environmentConfig = JSON.parse('<%= JSON.stringify(config) %>');
+  </script>
+  <script src="js/jquery.js"></script>
+  <script src="js/platform.js"></script>
+  <script src="js/main<%= jsFileExt %>"></script>
+</body>
+</html>

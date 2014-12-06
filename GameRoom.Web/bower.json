@@ -1,0 +1,25 @@
+{
+  "name": "support-portal-ui",
+  "version": "0.0.0",
+  "authors": [
+    "Max Polun <mpolun@mdsol.com>"
+  ],
+  "description": "ui for Medidata support portal",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "Proprietary",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.3.3",
+    "sandman": "git@github.com:mdsol/sandman-rails#0.4.1",
+    "angular-mocks": "~1.3.3"
+  }
+}
