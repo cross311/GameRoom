@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using GameRoom.GameService;
 using GameRoom.GameService.Data;
+using GameRoom.GameService.Data.Models;
 using Player = GameRoom.WebAPI.Models.Player;
 
 namespace GameRoom.WebAPI.Controllers
@@ -52,13 +53,13 @@ namespace GameRoom.WebAPI.Controllers
 
 
 
-        private static GameService.Data.Player ToServiceModel(Player player)
+        private static GameService.Data.Models.Player ToServiceModel(Player player)
         {
-            var request = new GameService.Data.Player(player.Name, player.Email);
+            var request = new GameService.Data.Models.Player(player.Name, player.Email);
             return request;
         }
 
-        private static Player ToWebApiModel(GameService.Data.Player result)
+        private static Player ToWebApiModel(GameService.Data.Models.Player result)
         {
             return new Player
             {

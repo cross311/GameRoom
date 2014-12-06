@@ -56,15 +56,15 @@ namespace GameRoom.WebAPI.Controllers
             return ToWebApiModel(result);
         }
 
-        private static GameService.Data.GameResult ToServiceModel(int id, GameResult gameResult)
+        private static GameService.Data.Models.GameResult ToServiceModel(int id, GameResult gameResult)
         {
-            var team1Result = new GameService.Data.TeamResult(gameResult.Team1.Score, gameResult.Team1.Players);
-            var team2Result = new GameService.Data.TeamResult(gameResult.Team2.Score, gameResult.Team2.Players);
-            var request = new GameService.Data.GameResult(id, gameResult.GameType, team1Result, team2Result);
+            var team1Result = new GameService.Data.Models.TeamResult(gameResult.Team1.Score, gameResult.Team1.Players);
+            var team2Result = new GameService.Data.Models.TeamResult(gameResult.Team2.Score, gameResult.Team2.Players);
+            var request = new GameService.Data.Models.GameResult(id, gameResult.GameType, team1Result, team2Result);
             return request;
         }
 
-        private static GameResult ToWebApiModel(GameService.Data.GameResult result)
+        private static GameResult ToWebApiModel(GameService.Data.Models.GameResult result)
         {
             return new GameResult
             {

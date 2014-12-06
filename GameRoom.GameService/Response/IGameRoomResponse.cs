@@ -1,4 +1,4 @@
-namespace GameRoom.GameService
+namespace GameRoom.GameService.Response
 {
     public interface IGameRoomResponse< out T>
     {

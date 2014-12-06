@@ -1,5 +1,6 @@
 ﻿using GameRoom.GameService;
 using GameRoom.GameService.Data;
+using GameRoom.GameService.Data.InMemory;
 
 namespace GameRoom.WebAPI
 {

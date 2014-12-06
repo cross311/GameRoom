@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace GameRoom.GameService.Data
+namespace GameRoom.GameService.Data.Models
 {
     public class TeamResult
     {

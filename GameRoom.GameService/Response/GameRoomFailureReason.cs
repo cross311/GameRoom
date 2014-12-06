@@ -1,4 +1,4 @@
-namespace GameRoom.GameService
+namespace GameRoom.GameService.Response
 {
     internal class GameRoomFailureReason : IGameRoomFailureReason
     {

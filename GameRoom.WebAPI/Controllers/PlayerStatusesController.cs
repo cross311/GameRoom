@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using GameRoom.GameService;
 using GameRoom.GameService.Data;
+using GameRoom.GameService.Data.Models;
 using PlayerStatus = GameRoom.WebAPI.Models.PlayerStatus;
 
 namespace GameRoom.WebAPI.Controllers
@@ -51,17 +52,17 @@ namespace GameRoom.WebAPI.Controllers
             return ToWebApiModel(result);
         }
 
-        private static GameService.Data.PlayerStatus ToServiceModel(PlayerStatus playerStatus)
+        private static GameService.Data.Models.PlayerStatus ToServiceModel(PlayerStatus playerStatus)
         {
             PlayerState state;
             if(!Enum.TryParse(playerStatus.State, true, out state))
                 state = PlayerState.NotAvailable;
 
-            var request = new GameService.Data.PlayerStatus(playerStatus.Player, state, playerStatus.Message, playerStatus.Reported ?? DateTime.UtcNow);
+            var request = new GameService.Data.Models.PlayerStatus(playerStatus.Player, state, playerStatus.Message, playerStatus.Reported ?? DateTime.UtcNow);
             return request;
         }
 
-        private static PlayerStatus ToWebApiModel(GameService.Data.PlayerStatus result)
+        private static PlayerStatus ToWebApiModel(GameService.Data.Models.PlayerStatus result)
         {
             return new PlayerStatus
             {

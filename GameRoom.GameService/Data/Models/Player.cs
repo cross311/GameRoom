@@ -1,4 +1,4 @@
-﻿namespace GameRoom.GameService.Data
+﻿namespace GameRoom.GameService.Data.Models
 {
     public class Player
     {

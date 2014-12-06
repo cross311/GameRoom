@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using GameRoom.GameService.Data;
+using GameRoom.GameService.Data.Models;
+using GameRoom.GameService.Response;
 
 namespace GameRoom.GameService
 {

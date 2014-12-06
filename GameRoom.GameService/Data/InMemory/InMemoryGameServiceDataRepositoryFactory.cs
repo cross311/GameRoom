@@ -1,4 +1,4 @@
-namespace GameRoom.GameService.Data
+namespace GameRoom.GameService.Data.InMemory
 {
     public class InMemoryGameServiceDataRepositoryFactory : IGameServiceDataRepositoryFactory
     {

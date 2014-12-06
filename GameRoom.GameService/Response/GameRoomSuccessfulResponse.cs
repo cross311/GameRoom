@@ -1,6 +1,4 @@
-using System;
-
-namespace GameRoom.GameService
+namespace GameRoom.GameService.Response
 {
     internal class GameRoomSuccessfulResponse<T> : IGameRoomResponse<T>
     {
