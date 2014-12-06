@@ -20,7 +20,6 @@ namespace GameRoom.GameService
             var playerStatusService = new PlayerStatusService(_GameServiceData.PlayerStatusRepository);
 
             var application = new GameRoomApplication(
-                _GameServiceData,
                 gameResultService,
                 playerService,
                 playerStatusService);
