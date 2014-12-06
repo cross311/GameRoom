@@ -1,12 +1,13 @@
 'use strict';
 
-angular.module('supportPortal.example', ['ngRoute'])
+angular.module('gameroom.example', ['ui.router'])
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/example', {
-    templateUrl: 'templates/example-module/example.html',
-    controllerAs: 'ExampleCtrl'
-  });
+.config(['$stateProvider', function ($stateProvider) {
+    $stateProvider.state('example', {
+        url: '/example',
+        templateUrl: 'templates/example-module/example.html',
+        controller: 'ExampleCtrl as vm'
+    });
 }])
 
 .controller('ExampleCtrl', [function() {

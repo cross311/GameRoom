@@ -1,10 +1,12 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-angular.module('supportPortal', [
-  'ngRoute',
-  'supportPortal.example'
+angular.module('gameroom', [
+  'ui.router',
+  'gameroom.example'
 ]).
-config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/example'});
+config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+    //
+    // For any unmatched url, redirect to /example
+    $urlRouterProvider.otherwise('/example');
 }]);

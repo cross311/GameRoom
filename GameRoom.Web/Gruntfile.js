@@ -9,7 +9,7 @@ module.exports = function(grunt){
     js: {
       src: [
         'bower_components/angular/angular.js',
-        'bower_components/angular-route/angular-route.js',
+        'bower_components/angular-ui-router/release/angular-ui-router.min.js',
         'src/**/*.js',
         'src/main.js',
         '!src/**/*Spec.js' // include all js files that are not specs
@@ -137,7 +137,7 @@ module.exports = function(grunt){
   config.watch = {
     js: {
       files: ['src/**/*.js', 'src/main.js'],
-      tasks: ['eslint', 'jasmine', 'concat:js'],
+      tasks: ['eslint', 'concat:js'],
       options: {
         atBegin: true
       }
@@ -158,7 +158,7 @@ module.exports = function(grunt){
     },
     index: {
       files: ['src/index.html'],
-      tasks: 'templates',
+      tasks: 'template',
       options: {
         atBegin: true
       }

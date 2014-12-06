@@ -1,10 +1,10 @@
 {
-  "name": "support-portal-ui",
+  "name": "gameroom-web",
   "version": "0.0.0",
   "authors": [
-    "Max Polun <mpolun@mdsol.com>"
+    "Connor Ross <cross@mdsol.com>"
   ],
-  "description": "ui for Medidata support portal",
+  "description": "UI for game room application",
   "moduleType": [
     "globals"
   ],
@@ -19,6 +19,7 @@
   ],
   "dependencies": {
     "angular": "~1.3.3",
+    "angular-ui-router": "~0.2.13",
     "sandman": "git@github.com:mdsol/sandman-rails#0.4.1",
     "angular-mocks": "~1.3.3"
   }
