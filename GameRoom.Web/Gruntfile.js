@@ -10,6 +10,7 @@ module.exports = function(grunt){
       src: [
         'bower_components/angular/angular.js',
         'bower_components/angular-ui-router/release/angular-ui-router.min.js',
+        'bower_components/angular-local-storage/dist/angular-local-storage.min.js',
         'src/**/*.js',
         'src/main.js',
         '!src/**/*Spec.js' // include all js files that are not specs
@@ -48,6 +49,7 @@ module.exports = function(grunt){
         data: {
           jsFileExt: '.min.js',
           cssFileExt: '.min.css',
+          indexExt: '.html',
           config: {
             env: 'production'
           }
@@ -62,6 +64,7 @@ module.exports = function(grunt){
         data: {
           jsFileExt: '.js',
           cssFileExt: '.css',
+          indexExt: '.dev.html',
           config: {
             env: 'development'
           }

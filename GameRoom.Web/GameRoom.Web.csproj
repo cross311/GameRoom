@@ -18,16 +18,21 @@
     <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="src\players-module\login.html" />
+    <Content Include="src\players-module\players.js" />
+    <Content Include="src\players-module\playersSpec.js" />
     <Content Include="src\example-module\example.html" />
     <Content Include="src\example-module\example.js" />
     <Content Include="src\example-module\exampleSpec.js" />
     <Content Include="src\index.html" />
     <Content Include="src\main.js" />
+    <Content Include="src\services\account.js" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="src\example-module\example.scss" />
     <Content Include="src\main.scss" />
+    <Content Include="src\players-module\players.scss" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -35,6 +40,7 @@
       <DependentUpon>web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
   </PropertyGroup>
