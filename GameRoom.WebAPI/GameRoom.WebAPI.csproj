@@ -175,6 +175,8 @@
     <Compile Include="Controllers\GameResultsController.cs" />
     <Compile Include="Controllers\GameTypesController.cs" />
     <Compile Include="Controllers\PlayersController.cs" />
+    <Compile Include="Controllers\PlayerStatesController.cs" />
+    <Compile Include="Controllers\PlayerStatusesController.cs" />
     <Compile Include="Models\GameResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResourceLocator.cs" />
