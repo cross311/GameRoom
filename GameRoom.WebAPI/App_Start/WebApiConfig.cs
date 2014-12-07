@@ -26,7 +26,7 @@ namespace GameRoom.WebAPI
             config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
 
             //CORS
-            var cors = new EnableCorsAttribute("http://localhost:8000", "*", "*");
+            var cors = new EnableCorsAttribute("http://localhost:8000,http://cross311.github.io", "*", "*");
             config.EnableCors(cors);
 
             // Web API routes
