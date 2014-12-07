@@ -20,6 +20,7 @@
   "dependencies": {
     "angular": "~1.3.3",
     "angular-ui-router": "~0.2.13",
+    "angular-local-storage": "~0.1.5",
     "sandman": "git@github.com:mdsol/sandman-rails#0.4.1",
     "angular-mocks": "~1.3.3"
   }
