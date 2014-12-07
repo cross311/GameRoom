@@ -4,7 +4,8 @@
 angular.module('gameroom', [
   'ui.router',
   'gameroom.players',
-  'gameroom.account'
+  'gameroom.account',
+  'gameroom.games'
 ]).
 config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     //

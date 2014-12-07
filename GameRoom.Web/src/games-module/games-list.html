@@ -1,0 +1,33 @@
+<div class="page-header page-header-main clearfix">
+    <div class="page-header-text">
+        <h3>Medidata Game Room NYC Office</h3>
+    </div>
+    <div class="page-header-controls">
+        <a href="" class="btn btn-default"><span class="fa fa-glass"></span> Update Status</a>
+    </div>
+</div>
+<div class="row">
+    <div id="gameType-{{gameType.name}}" class="gameType col-sm-12" ng-repeat="gameType in vm.gameTypes | orderBy:'name'">
+        <h3 ng-bind="gameType.name"></h3>
+        <ul class="games">
+            <li ng-repeat="game in vm.games | filter:{gameType:gameType.name}:strict" class="col-md-4">
+                <div class="game-team1">
+                    <span class="score" ng-bind="game.team1.score"></span>
+                    <ul class="game-players">
+                        <li ng-repeat="playerId in game.team1.players">
+                            <span ng-bind="playerId"></span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="game-team2">
+                    <span class="score" ng-bind="game.team2.score"></span>
+                    <ul class="game-players">
+                        <li ng-repeat="playerId in game.team2.players">
+                            <span ng-bind="playerId"></span>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

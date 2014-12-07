@@ -18,6 +18,9 @@
     <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="src\games-module\games-list.html" />
+    <Content Include="src\games-module\games.js" />
+    <Content Include="src\games-module\gamesSpec.js" />
     <Content Include="src\players-module\login.html" />
     <Content Include="src\players-module\players.js" />
     <Content Include="src\players-module\playersSpec.js" />
@@ -33,6 +36,7 @@
     <Content Include="src\example-module\example.scss" />
     <Content Include="src\main.scss" />
     <Content Include="src\players-module\players.scss" />
+    <Content Include="src\games-module\games.scss" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
