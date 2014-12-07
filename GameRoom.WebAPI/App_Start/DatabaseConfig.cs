@@ -34,19 +34,25 @@ namespace GameRoom.WebAPI
                 })
                 .ToList();
 
+            var rand = new Random();
+
             database.GameTypeRepository.GetGameTypes()
-                .ForEach(gameType => database.GameResultRepository.RecordGameResults(
-                    new GameResult(
-                        gameType.Name, 
-                        new TeamResult(8, new[]
-                        {
-                            players[0].Player.Id, players[1].Player.Id
-                        }), 
-                        new TeamResult( 4, new[]
-                        {
-                            players[2].Player.Id, players[3].Player.Id
-                        })
-                        )));
+                .ForEach(gameType =>{
+                    var n = players.Count;
+                    var index = rand.Next(n);
+                    database.GameResultRepository.RecordGameResults(
+                        new GameResult(
+                            gameType.Name,
+                            new TeamResult(rand.Next(20), new[]
+                            {
+                                players[index % n].Player.Id, players[(index + 1) % (index + 1) % n].Player.Id
+                            }),
+                            new TeamResult(rand.Next(20), new[]
+                            {
+                                players[(index + 2) % n].Player.Id, players[(index + 3) % n].Player.Id
+                            })
+                        ));
+                });
 
             return database;
         }

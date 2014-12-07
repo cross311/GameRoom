@@ -1,26 +1,112 @@
 'use strict';
 
-angular.module('gameroom.games', ['ui.router', 'gameroom.account'])
+angular.module('gameroom.games', [
+    'ui.router',
+    'gameroom.account',
+    'gameroom.players'
+])
 
 .config(['$stateProvider', function ($stateProvider) {
     $stateProvider.state('games', {
-                url: '/games',
-                templateUrl: 'templates/games-module/games-list.html',
-                controller: 'GamesListCtrl as vm'
-            });
+        url: '/games',
+        templateUrl: 'templates/games-module/games-list.html',
+        controller: 'GamesListCtrl as vm',
+        resolve: {
+            games: ['GamesSvc', function(gamesSvc) {
+                 return gamesSvc.getGames().then(function (response) { return response.data; });
+                }],
+            gameTypes: ['GamesSvc', function(gamesSvc) {
+                    return gamesSvc.getGameTypes().then(function(response) { return response.data; });
+            }],
+            players: ['PlayersSvc', function (playersSvc) {
+                            return playersSvc.getPlayers().then(
+                                function (response) {
+                                    return response.data;
+                                }, function (data) {
+                                    console.error(data);
+                                    return [];
+                                }
+                            );
+                        }]
+    }
+    })
+    .state('games.new', {
+        url: '/new',
+        views: {
+            '@': {
+                templateUrl: 'templates/games-module/games-new.html',
+                controller: 'GamesNewCtrl as vm'
+            }
+        }
+    });
     }])
 
-.controller('GamesListCtrl', ['AccountSvc', 'GamesSvc', function (accountSvc, gameSvc) {
+.controller('GamesListCtrl', ['gameTypes', 'games', 'players', function (gameTypes, games, players) {
     var vm = this;
 
-    vm.gameTypes = [];
-    vm.games = [];
-    gameSvc.getGameTypes().success(function (gameTypes) {
-        vm.gameTypes = gameTypes;
-    });
-    gameSvc.getGames().success(function(games) {
-        vm.games = games;
-    });
+    vm.gameTypes = gameTypes;
+    vm.games = games;
+    vm.players = players;
+
+    vm.getPlayerName = function(playerId) {
+        for (var index = 0; index < vm.players.length; index++) {
+            var player = vm.players[index];
+            if (player.id === playerId) {
+                return player.name;
+            }
+        }
+    };
+}])
+
+.controller('GamesNewCtrl', ['GamesSvc', '$state', 'gameTypes', 'games', 'players', function (gameSvc, $state, gameTypes, games, players) {
+    var vm = this;
+    vm.gameTypes = gameTypes;
+    vm.games = games;
+    vm.players = players;
+
+    vm.newGameResult = {
+        gameType: '',
+        team1: {
+            score: 0,
+            players: []
+        },
+        team2: {
+            score: 0,
+            players: []
+        }
+    };
+
+    vm.chooseGameType = function(gameType) {
+        vm.newGameResult.gameType = gameType.name;
+    };
+
+    vm.choosePlayer = function(team, player) {
+        team.players.push(player.id);
+    };
+
+    vm.removePlayer = function (team, player) {
+        var index = team.players.indexOf(player.id);
+        if (index > -1) {
+            team.players.splice(index, 1);
+        }
+    };
+
+    vm.saveAllowed = function() {
+        var g = vm.newGameResult;
+        var hasType = g.gameType !== '';
+        var hasTeam1Players = g.team1.players.length > 0;
+        var hasTeam2Players = g.team2.players.length > 0;
+
+        var saveAllowed = hasType && hasTeam1Players && hasTeam2Players;
+        return saveAllowed;
+    };
+
+    vm.record = function(gameResult) {
+        gameSvc.record(gameResult).success(function (data) {
+            vm.games.push(data);
+            $state.go('games');
+        });
+    };
 }])
 
 .factory('GamesSvc', ['$http', function($http) {

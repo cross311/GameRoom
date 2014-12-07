@@ -19,8 +19,21 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="src\games-module\games-list.html" />
+    <Content Include="src\games-module\games-new.html" />
+    <Content Include="src\games-module\games.css">
+      <DependentUpon>games.scss</DependentUpon>
+    </Content>
     <Content Include="src\games-module\games.js" />
+    <Content Include="src\games-module\games.min.css">
+      <DependentUpon>games.css</DependentUpon>
+    </Content>
     <Content Include="src\games-module\gamesSpec.js" />
+    <Content Include="src\main.css">
+      <DependentUpon>main.scss</DependentUpon>
+    </Content>
+    <Content Include="src\main.min.css">
+      <DependentUpon>main.css</DependentUpon>
+    </Content>
     <Content Include="src\players-module\login.html" />
     <Content Include="src\players-module\players.js" />
     <Content Include="src\players-module\playersSpec.js" />
@@ -37,6 +50,12 @@
     <Content Include="src\main.scss" />
     <Content Include="src\players-module\players.scss" />
     <Content Include="src\games-module\games.scss" />
+    <Content Include="src\games-module\games.css.map">
+      <DependentUpon>games.css</DependentUpon>
+    </Content>
+    <Content Include="src\main.css.map">
+      <DependentUpon>main.css</DependentUpon>
+    </Content>
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

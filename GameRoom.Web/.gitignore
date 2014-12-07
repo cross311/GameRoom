@@ -5,3 +5,6 @@ node_modules/
 .sass-cache/
 .tern-port
 bower_components/
+**.css
+**.min.css
+**.css.map
