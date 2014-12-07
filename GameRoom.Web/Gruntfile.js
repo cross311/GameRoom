@@ -200,6 +200,20 @@ module.exports = function(grunt){
       }
     }
   }
+  config.buildcontrol = {
+    options: {
+        dir: 'build',
+        commit: true,
+        push: true,
+        message: 'Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%'
+    },
+    pages: {
+        options: {
+          remote: 'git@github.com:cross311/GameRoom.git',
+          branch: 'gh-pages'
+        }
+    }
+  }
 
   grunt.initConfig(config);
   grunt.loadNpmTasks('grunt-aws-s3');
@@ -218,8 +232,10 @@ module.exports = function(grunt){
   grunt.loadNpmTasks('grunt-protractor-runner');
   grunt.loadNpmTasks('grunt-scss-lint');
   grunt.loadNpmTasks('grunt-template');
+  grunt.loadNpmTasks('grunt-build-control');
 
   grunt.registerTask('default', ['connect:dev', 'watch']);
-  grunt.registerTask('test', ['connect:test',  'eslint', 'scsslint', 'jasmine', 'protractor'])
+  grunt.registerTask('test', ['connect:test', 'eslint', 'scsslint', 'jasmine', 'protractor'])
   grunt.registerTask('build', ['concat', 'copy', 'template', 'sass', 'uglify', 'cssmin', ])
+  grunt.registerTask('deploy', ['concat', 'copy', 'template', 'sass', 'uglify', 'cssmin', 'buildcontrol:pages'])
 }
