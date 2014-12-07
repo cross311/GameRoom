@@ -5,8 +5,8 @@ angular.module('gameroom.players', ['ui.router', 'gameroom.account', 'gameroom.c
 .config(['$stateProvider', function ($stateProvider) {
         $stateProvider.state('players', {
                 abstract: true,
-                templateUrl: 'templates/players-module/players.html',
-                controller: 'PlayersCtrl as vm',
+                template: '',
+                controller: function (){},
                 resolve: {
                     players: [
                         'PlayersSvc', function(playersSvc) {
