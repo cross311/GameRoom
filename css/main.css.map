@@ -1,0 +1,8 @@
+{
+"version": 3,
+"mappings": "AAGY,iDAAa;EACT,OAAO,EAAC,IAAI;AAIxB,wBAAe;EACX,OAAO,EAAC,IAAI;;ACNpB,UAAW;EACP,UAAU,EAAC,MAAM;EACjB,wBAAc;IACV,OAAO,EAAC,IAAI;EAEhB,wBAAc;IACV,WAAW,EAAC,IAAI;EAEpB,cAAI;IACA,OAAO,EAAC,IAAI;;AAIhB,kBAAU;EACV,gBAAgB,EAAC,OAAO;EAEpB,gCAAc;IACV,UAAU,EAAC,MAAM;EAErB,gCAAc;IACV,OAAO,EAAC,MAAM",
+"sources": ["src/games-module/games.scss","src/main.scss"],
+"sourcesContent": ["#game-new {\n    .active {\n        .player.thumbnail {\n            button.choose{\n                display:none;\n            }\n        }\n    }\n    .on-other-team {\n        display:none;\n    }\n}","@import \"games-module/games\";\n\n\n.thumbnail {\n    text-align:center;\n    button.remove {\n        display:none;\n    }\n    .caption > h5 {\n        font-weight:bold;\n    }\n    img {\n        display:none;\n    }\n}\n.active {\n    .thumbnail{\n    background-color:#d7e7f7;\n\n        button.choose {\n            visibility:hidden;\n        }\n        button.remove {\n            display:inline;\n        }\n    }\n}\n"],
+"names": [],
+"file": "main.css"
+}

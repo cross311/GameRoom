@@ -1,0 +1,22 @@
+#game-new .active .player.thumbnail button.choose {
+  display: none; }
+#game-new .on-other-team {
+  display: none; }
+
+.thumbnail {
+  text-align: center; }
+  .thumbnail button.remove {
+    display: none; }
+  .thumbnail .caption > h5 {
+    font-weight: bold; }
+  .thumbnail img {
+    display: none; }
+
+.active .thumbnail {
+  background-color: #d7e7f7; }
+  .active .thumbnail button.choose {
+    visibility: hidden; }
+  .active .thumbnail button.remove {
+    display: inline; }
+
+/*# sourceMappingURL=main.css.map */
