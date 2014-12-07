@@ -1,27 +1,5 @@
 #game-new {
-    .thumbnail {
-        text-align:center;
-        button.remove {
-            display:none;
-        }
-        .caption > h5 {
-            font-weight:bold;
-        }
-        img {
-            display:none;
-        }
-    }
     .active {
-        .thumbnail{
-        background-color:#d7e7f7;
-
-            button.choose {
-                visibility:hidden;
-            }
-            button.remove {
-                display:inline;
-            }
-        }
         .player.thumbnail {
             button.choose{
                 display:none;

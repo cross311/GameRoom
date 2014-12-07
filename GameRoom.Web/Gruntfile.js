@@ -51,7 +51,8 @@ module.exports = function(grunt){
           cssFileExt: '.min.css',
           indexExt: '.html',
           config: {
-            env: 'production'
+              env: 'production',
+              apiServer: 'http://gameroomapi.azurewebsites.net'
           }
         }
       }
@@ -66,7 +67,8 @@ module.exports = function(grunt){
           cssFileExt: '.css',
           indexExt: '.dev.html',
           config: {
-            env: 'development'
+              env: 'development',
+              apiServer: 'http://localhost:49269'
           }
         }
       }

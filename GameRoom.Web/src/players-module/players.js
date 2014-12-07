@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('gameroom.players', ['ui.router', 'gameroom.account'])
+angular.module('gameroom.players', ['ui.router', 'gameroom.account', 'gameroom.config'])
 
 .config(['$stateProvider', function ($stateProvider) {
         $stateProvider.state('players', {
@@ -63,11 +63,11 @@ angular.module('gameroom.players', ['ui.router', 'gameroom.account'])
     };
 }])
 
-.factory('PlayersSvc', ['$http', function($http) {
+.factory('PlayersSvc', ['$http', 'config', function ($http, config) {
     var playersSvc = {};
 
     function _getPlayers() {
-        return $http.get('http://localhost:49269/players').
+        return $http.get(config.apiServer + '/players').
         success(function (data) {
             // this callback will be called asynchronously
             // when the response is available
@@ -81,7 +81,7 @@ angular.module('gameroom.players', ['ui.router', 'gameroom.account'])
     }
 
     function _register(player) {
-        return $http.post('http://localhost:49269/players', player).
+        return $http.post(config.apiServer + '/players', player).
         success(function (data) {
             // this callback will be called asynchronously
             // when the response is available

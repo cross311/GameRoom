@@ -1,18 +1,19 @@
 'use strict';
 
-angular.module('gameroom.account', ['LocalStorageModule'])
+angular.module('gameroom.account', ['LocalStorageModule', 'ui.router'])
 .config([
     'localStorageServiceProvider', function (localStorageServiceProvider) {
         localStorageServiceProvider.setPrefix('gameroom');
     }
 ])
-.controller('AccountCtrl', ['AccountSvc', function (accountSvc) {
+.controller('AccountCtrl', ['AccountSvc', '$state', function (accountSvc, $state) {
     var vm = this;
 
     vm.authentication = accountSvc.authentication;
 
     vm.logout = function() {
         accountSvc.logout();
+        $state.go('players.login');
     };
 }])
 .factory('AccountSvc', [

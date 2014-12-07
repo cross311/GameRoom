@@ -3,7 +3,8 @@
 angular.module('gameroom.games', [
     'ui.router',
     'gameroom.account',
-    'gameroom.players'
+    'gameroom.players',
+    'gameroom.config'
 ])
 
 .config(['$stateProvider', function ($stateProvider) {
@@ -109,11 +110,11 @@ angular.module('gameroom.games', [
     };
 }])
 
-.factory('GamesSvc', ['$http', function($http) {
+.factory('GamesSvc', ['$http', 'config', function ($http, config) {
     var gamesSvc = {};
 
     function _getGames() {
-        return $http.get('http://localhost:49269/gameresults').
+        return $http.get(config.apiServer + '/gameresults').
         success(function (data) {
             // this callback will be called asynchronously
             // when the response is available
@@ -127,7 +128,7 @@ angular.module('gameroom.games', [
     }
 
     function _getGameTypes() {
-        return $http.get('http://localhost:49269/gametypes').
+        return $http.get(config.apiServer + '/gametypes').
         success(function (data) {
             // this callback will be called asynchronously
             // when the response is available
@@ -141,7 +142,7 @@ angular.module('gameroom.games', [
     }
 
     function _record(gameResult) {
-        return $http.post('http://localhost:49269/gameresults', gameResult).
+        return $http.post(config.apiServer + '/gameresults', gameResult).
         success(function (data) {
             // this callback will be called asynchronously
             // when the response is available

@@ -42,6 +42,7 @@
     <Content Include="src\example-module\exampleSpec.js" />
     <Content Include="src\index.html" />
     <Content Include="src\main.js" />
+    <Content Include="src\services\config.js" />
     <Content Include="src\services\account.js" />
     <Content Include="web.config" />
   </ItemGroup>
