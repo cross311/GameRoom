@@ -23,7 +23,7 @@ namespace GameRoom.WebAPI
             {
                 new {Name = "Connor Ross", Email = "cross@mdsol.com", State = PlayerState.Available , Message = "Hey"},
                 new {Name = "Dan Hoizner", Email = "dhoizner@mdsol.com", State = PlayerState.Available, Message = "Bam" },
-                new {Name = "Gerrard Lindsey", Email = "glindsey@mdsol.com", State = PlayerState.Available, Message = "Oh Ay" },
+                new {Name = "Gerrard Lindsay", Email = "glindsay@mdsol.com", State = PlayerState.Available, Message = "Oh Ay" },
                 new {Name = "Matt Cochran", Email = "mcochran@mdsol.com", State = PlayerState.Available, Message = "Ya Ha" }
             }
                 .Select(person =>
