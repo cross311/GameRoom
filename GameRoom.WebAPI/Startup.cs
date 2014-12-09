@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web.Http;
 using GameRoom.GameService;
@@ -21,6 +22,16 @@ namespace GameRoom.WebAPI
             var config = new HttpConfiguration();
             WebApiConfig.Register(config, gameRoomApplication);
             app.UseWebApi(config);
+        }
+    }
+
+    internal static class Config
+    {
+        public static string OrchestrateIOApiKey()
+        {
+            var apiKey = ConfigurationManager.AppSettings["orchestrate_apikey"];
+
+            return apiKey;
         }
     }
 }

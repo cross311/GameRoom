@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using GameRoom.GameService.Data.Models;
 
 namespace GameRoom.GameService.Data.OrchestrateIO
 {
@@ -14,19 +15,21 @@ namespace GameRoom.GameService.Data.OrchestrateIO
             _Orchestrate = orchestrate;
         }
 
-        public Models.Player RegisterPlayer(Models.Player player)
+        public Player RegisterPlayer(Player player)
         {
-            throw new NotImplementedException();
+            var result = new Player(Guid.NewGuid(), player.Name, player.Email);
+            return result;
         }
 
-        public IEnumerable<Models.Player> GetPlayers()
+        public IEnumerable<Player> GetPlayers()
         {
-            throw new NotImplementedException();
+            return Enumerable.Empty<Player>();
         }
 
-        public Models.Player GetPlayerForAccessToken(Models.AccessToken accessToken)
+        public Player GetPlayerForAccessToken(AccessToken accessToken)
         {
-            throw new NotImplementedException();
+            var result = new Player(accessToken.PlayerId, "Connor Ross", "cross@mdsol.com");
+            return result;
         }
     }
 }

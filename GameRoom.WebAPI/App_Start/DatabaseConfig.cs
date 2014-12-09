@@ -3,6 +3,7 @@ using System.Linq;
 using GameRoom.GameService.Data;
 using GameRoom.GameService.Data.InMemory;
 using GameRoom.GameService.Data.Models;
+using GameRoom.GameService.Data.OrchestrateIO;
 using WebGrease.Css.Extensions;
 
 namespace GameRoom.WebAPI
@@ -11,10 +12,32 @@ namespace GameRoom.WebAPI
     {
         public static GameServiceDataRepository Setup()
         {
-            var database = new InMemoryGameServiceDataRepositoryFactory().Build();
+            var inMemoryDatabase = new InMemoryGameServiceDataRepositoryFactory().Build();
+            var orchestrateIODatabase = BuildOrchestrateIODatabase(inMemoryDatabase);
 
-            database = Seed(database);
-            return database;
+            if (ReferenceEquals(orchestrateIODatabase, null))
+            {
+                inMemoryDatabase = Seed(inMemoryDatabase);
+                return inMemoryDatabase;
+            }
+
+            return orchestrateIODatabase;
+        }
+
+        private static GameServiceDataRepository BuildOrchestrateIODatabase(GameServiceDataRepository inMemoryDatabase)
+        {
+            if(ReferenceEquals(inMemoryDatabase, null)) throw new ArgumentNullException("inMemoryDatabase");
+
+            var apiKey = Config.OrchestrateIOApiKey();
+
+            if (string.IsNullOrWhiteSpace(apiKey))
+                return null;
+
+            var orchestrateIODatabase =
+                new OrchestrateIOGameServiceDataRepositoryFactory(apiKey, inMemoryDatabase.PlayerStateRepository,
+                    inMemoryDatabase.GameTypeRepository).Build();
+
+            return orchestrateIODatabase;
         }
 
         private static GameServiceDataRepository Seed(GameServiceDataRepository database)

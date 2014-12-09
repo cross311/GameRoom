@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using GameRoom.GameService.Data.Models;
 
 namespace GameRoom.GameService.Data.OrchestrateIO
 {
@@ -14,24 +15,24 @@ namespace GameRoom.GameService.Data.OrchestrateIO
             _Orchestrate = orchestrate;
         }
 
-        public IEnumerable<Models.PlayerStatus> GetPlayerStatuses()
+        public IEnumerable<PlayerStatus> GetPlayerStatuses()
         {
-            throw new NotImplementedException();
+            return Enumerable.Empty<PlayerStatus>();
         }
 
-        public Models.PlayerStatus GetPlayerStatusForPlayer(Guid playerId)
+        public PlayerStatus GetPlayerStatusForPlayer(Guid playerId)
         {
-            throw new NotImplementedException();
+            return new PlayerStatus(playerId, PlayerState.NotAvailable, string.Empty, DateTime.UtcNow);
         }
 
-        public IEnumerable<Models.PlayerStatus> GetPlayerStatusesInState(Models.PlayerState playerState)
+        public IEnumerable<PlayerStatus> GetPlayerStatusesInState(PlayerState playerState)
         {
-            throw new NotImplementedException();
+            return Enumerable.Empty<PlayerStatus>();
         }
 
-        public Models.PlayerStatus UpdatePlayerStatus(Models.PlayerStatus playerStatus)
+        public PlayerStatus UpdatePlayerStatus(PlayerStatus playerStatus)
         {
-            throw new NotImplementedException();
+            return playerStatus;
         }
     }
 }

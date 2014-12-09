@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using GameRoom.GameService.Data.Models;
 
 namespace GameRoom.GameService.Data.OrchestrateIO
 {
@@ -13,29 +14,30 @@ namespace GameRoom.GameService.Data.OrchestrateIO
         {_Orchestrate = orchestrate;
         }
 
-        public IEnumerable<Models.GameResult> GetGameResults()
+        public IEnumerable<GameResult> GetGameResults()
         {
-            throw new NotImplementedException();
+            return Enumerable.Empty<GameResult>();
         }
 
-        public IEnumerable<Models.GameResult> GetGameResultsForPlayer(Guid playerId)
+        public IEnumerable<GameResult> GetGameResultsForPlayer(Guid playerId)
         {
-            throw new NotImplementedException();
+            return Enumerable.Empty<GameResult>();
         }
 
-        public IEnumerable<Models.GameResult> GetGameResultsForGameType(string gameType)
+        public IEnumerable<GameResult> GetGameResultsForGameType(string gameType)
         {
-            throw new NotImplementedException();
+            return Enumerable.Empty<GameResult>();
         }
 
-        public Models.GameResult RecordGameResults(Models.GameResult gameResult)
+        public GameResult RecordGameResults(GameResult gameResult)
         {
-            throw new NotImplementedException();
+            var result = new GameResult(Guid.NewGuid(), gameResult.GameType, gameResult.Team1, gameResult.Team2);
+            return result;
         }
 
-        public Models.GameResult UpdateGameResults(Models.GameResult gameResult)
+        public GameResult UpdateGameResults(GameResult gameResult)
         {
-            throw new NotImplementedException();
+            return gameResult;
         }
     }
 }
