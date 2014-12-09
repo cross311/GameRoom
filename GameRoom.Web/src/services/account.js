@@ -13,7 +13,7 @@ angular.module('gameroom.account', ['LocalStorageModule', 'ui.router'])
 
     vm.logout = function() {
         accountSvc.logout();
-        $state.go('players.login');
+        $state.go('login');
     };
 }])
 .factory('AccountSvc', [

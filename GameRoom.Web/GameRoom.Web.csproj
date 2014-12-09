@@ -34,6 +34,7 @@
     <Content Include="src\main.min.css">
       <DependentUpon>main.css</DependentUpon>
     </Content>
+    <Content Include="src\players-module\players-list.html" />
     <Content Include="src\players-module\login.html" />
     <Content Include="src\players-module\players.js" />
     <Content Include="src\players-module\playersSpec.js" />
