@@ -28,7 +28,13 @@ namespace GameRoom.GameService.Data.OrchestrateIO
         {
             var results = _Orchestrate.List(_PlayerStatusCollectionName, _ReturnLimit, null, null);
 
-            var statuses = results.Results.Select(BuildPlayerStatus);
+            var statuses = results.Results.Select(BuildPlayerStatus)
+                .GroupBy(status => status.PlayerId)
+                .Select(playerStatuses =>
+                    playerStatuses
+                        .OrderByDescending(status => status.Reported)
+                        .FirstOrDefault());
+
             return statuses;
         }
 
