@@ -1,0 +1,52 @@
+<div class="page-header page-header-main clearfix">
+    <div class="page-header-text">
+        <h3>Players</h3>
+    </div>
+    <div class="page-header-controls">
+    </div>
+</div>
+
+<div class="container" id="players-list">
+    <div class="row" ng-show="vm.canUpdate">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Update Status</h3>
+            </div>
+            <div class="panel-body">
+                <form>
+                    <div class="form-group">
+                        <label for="#status">Status</label>
+
+                        <select id="status" ng-model="vm.newStatus.state" ng-options="state for state in vm.states" class="form-control"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="#message">Message</label>
+                        <input id="message" type="text" class="form-control" placeholder="I am ready to player (fooz|pool|fifa)" ng-model="vm.newStatus.message">
+                    </div>
+                    <button type="submit" class="btn btn-primary" ng-click="vm.update(vm.newStatus)">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-repeat="state in vm.states | orderBy:'+'">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title" ng-bind="state"></h3>
+            </div>
+            <div class="panel-body">
+                <div class="col-xs-6 col-md-3" ng-repeat="player in vm.players | filter:{state:state}:strict | orderBy: 'name'">
+                    <div class="thumbnail player">
+                        <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTkyIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDE5MiAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTkyIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjcxLjUiIHk9IjEwMCIgc3R5bGU9ImZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjE5MngyMDA8L3RleHQ+PC9nPjwvc3ZnPg==" alt="...">
+                        <div class="caption">
+                            <h5 ng-bind="player.name"></h5>
+                            <p><span ng-bind="player.email"></span></p>
+                            <p><span ng-bind="player.state"></span></p>
+                            <p><span ng-bind="player.message"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    

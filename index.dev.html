@@ -27,7 +27,7 @@
                             <i class="glyphicon glyphicon-log-out"></i> Logout
                         </a>
                         <!-- Hacky id to keep from having to mess with styles... Connor Bad -->
-                        <a id="logout" class="btn btn-link" ui-sref="players.login" ng-hide="vm.authentication.isAuth">
+                        <a id="logout" class="btn btn-link" ui-sref="login" ng-hide="vm.authentication.isAuth">
                             <i class="glyphicon glyphicon-log-in"></i> Login
                         </a>
                     </li>
@@ -37,13 +37,24 @@
         </div>
     </header>
     <nav id="navigation" class="clearfix" role="navigation">
-        <a class="home" href="/index.dev.html">
+        <a class="home" ui-sref="games">
             <i class="fa fa-home"></i>
             <span class="sr-only">
                 Home
             </span>
         </a>
-        <ul class="list-unstyled"></ul>
+        <ul class="list-unstyled">
+            <li class="dropdown">
+                <a ui-sref="games" class="btn" ui-sref-active="btn-primary">
+                    Games
+                </a>
+            </li>
+            <li class="dropdown">
+                <a ui-sref="players.list" class="btn" ui-sref-active="btn-primary">
+                    Players
+                </a>
+            </li>
+        </ul>
     </nav>
     <div id="main">
         <div ui-view></div>
