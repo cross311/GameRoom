@@ -33,12 +33,14 @@ namespace GameRoom.GameService.Data.OrchestrateIO
         {
             var orchestrate = new Orchestrate.Net.Orchestrate(_ApiKey);
 
-            var orchestrateResultToModelMapper = new OrchestrateResultToModelMapper<Player>();
-            var resultToModelMapper = new OrchestrateResultToModelMapper<GameResult>();
+            var playerMapper = new OrchestrateResultToModelMapper<Player>();
+            var gamResultMapper = new OrchestrateResultToModelMapper<GameResult>();
+            var palyerStatusMapper = new OrchestrateResultToModelMapper<PlayerStatus>();
+
             var repository = new GameServiceDataRepository(
-                   new PlayerRepository(orchestrate, orchestrateResultToModelMapper, _ReturnLimit),
-                   new GameResultRepository(orchestrate, resultToModelMapper, _ReturnLimit),
-                   new PlayerStatusRepository(orchestrate),
+                   new PlayerRepository(orchestrate, playerMapper, _ReturnLimit),
+                   new GameResultRepository(orchestrate, gamResultMapper, _ReturnLimit),
+                   new PlayerStatusRepository(orchestrate, palyerStatusMapper, _ReturnLimit),
                    _GameTypeRepository,
                    _PlayerStateRepository);
 

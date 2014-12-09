@@ -11,7 +11,7 @@ namespace GameRoom.GameService.Data.OrchestrateIO
     {
         private const string _GameResultCollectionName = "game_result";
         private readonly int _ReturnLimit;
-        private Orchestrate.Net.Orchestrate _Orchestrate;
+        private readonly Orchestrate.Net.Orchestrate _Orchestrate;
         private readonly IOrchestrateResultToModelMapper<GameResult> _ModelFactory;
 
         public GameResultRepository(Orchestrate.Net.Orchestrate orchestrate, IOrchestrateResultToModelMapper<GameResult> modelFactory, int returnLimit)
