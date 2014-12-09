@@ -42,15 +42,9 @@
     <Compile Include="Data\IGameServiceDataRepositoryFactory.cs" />
     <Compile Include="Data\Models\GameType.cs" />
     <Compile Include="Data\IGameTypeRepository.cs" />
-    <Compile Include="Data\InMemory\InMemoryGameServiceDataRepositoryFactory.cs" />
-    <Compile Include="Data\InMemory\InMemoryGameTypeRespository.cs" />
     <Compile Include="Data\Models\AccessToken.cs" />
     <Compile Include="Data\Models\GameResult.cs" />
     <Compile Include="Data\IGameResultRepository.cs" />
-    <Compile Include="Data\InMemory\InMemoryGameResultRepository.cs" />
-    <Compile Include="Data\InMemory\InMemoryPlayerRepository.cs" />
-    <Compile Include="Data\InMemory\InMemoryPlayerStateRepository.cs" />
-    <Compile Include="Data\InMemory\InMemoryPlayerStatusRepository.cs" />
     <Compile Include="Data\IPlayerRepository.cs" />
     <Compile Include="Data\IPlayerStateRepository.cs" />
     <Compile Include="Data\IPlayerStatusRepository.cs" />

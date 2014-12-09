@@ -221,6 +221,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GameRoom.GameService.Data.InMemory\GameRoom.GameService.Data.InMemory.csproj">
+      <Project>{cbc2e917-fd20-44d1-a8d1-6436668566a6}</Project>
+      <Name>GameRoom.GameService.Data.InMemory</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GameRoom.GameService\GameRoom.GameService.csproj">
       <Project>{d153134f-56b5-4f58-a489-744dc154a178}</Project>
       <Name>GameRoom.GameService</Name>

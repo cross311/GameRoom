@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameRoom.WebAPI", "GameRoom
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameRoom.Web", "GameRoom.Web\GameRoom.Web.csproj", "{151AE1E4-918C-4CED-94EB-3018D4B3A892}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameRoom.GameService.Data.InMemory", "GameRoom.GameService.Data.InMemory\GameRoom.GameService.Data.InMemory.csproj", "{CBC2E917-FD20-44D1-A8D1-6436668566A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{151AE1E4-918C-4CED-94EB-3018D4B3A892}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{151AE1E4-918C-4CED-94EB-3018D4B3A892}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{151AE1E4-918C-4CED-94EB-3018D4B3A892}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBC2E917-FD20-44D1-A8D1-6436668566A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBC2E917-FD20-44D1-A8D1-6436668566A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBC2E917-FD20-44D1-A8D1-6436668566A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBC2E917-FD20-44D1-A8D1-6436668566A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
