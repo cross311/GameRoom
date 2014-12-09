@@ -46,7 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameResultRepository.cs" />
     <Compile Include="OrchestrateIOGameServiceDataRepositoryFactory.cs" />
+    <Compile Include="PlayerRepository.cs" />
+    <Compile Include="PlayerStatusRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
