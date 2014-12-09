@@ -57,7 +57,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameResultRepository.cs" />
+    <Compile Include="IJsonModel.cs" />
+    <Compile Include="IOrchestrateResultToModelMapper.cs" />
     <Compile Include="OrchestrateIOGameServiceDataRepositoryFactory.cs" />
+    <Compile Include="OrchestrateResultToModelMapper.cs" />
     <Compile Include="PlayerRepository.cs" />
     <Compile Include="PlayerStatusRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GameRoom.GameService.Data.Models;
 
 namespace GameRoom.GameService.Data.OrchestrateIO
 {
@@ -11,6 +12,7 @@ namespace GameRoom.GameService.Data.OrchestrateIO
         private readonly string _ApiKey;
         private readonly IPlayerStateRepository _PlayerStateRepository;
         private readonly IGameTypeRepository _GameTypeRepository;
+        private readonly int _ReturnLimit;
 
         public OrchestrateIOGameServiceDataRepositoryFactory(
             string apiKey,
@@ -24,15 +26,18 @@ namespace GameRoom.GameService.Data.OrchestrateIO
             _ApiKey = apiKey;
             _PlayerStateRepository = playerStateRepository;
             _GameTypeRepository = gameTypeRepository;
+            _ReturnLimit = 100;
         }
 
         public GameServiceDataRepository Build()
         {
             var orchestrate = new Orchestrate.Net.Orchestrate(_ApiKey);
 
+            var orchestrateResultToModelMapper = new OrchestrateResultToModelMapper<Player>();
+            var resultToModelMapper = new OrchestrateResultToModelMapper<GameResult>();
             var repository = new GameServiceDataRepository(
-                   new PlayerRepository(orchestrate),
-                   new GameResultRepository(orchestrate),
+                   new PlayerRepository(orchestrate, orchestrateResultToModelMapper, _ReturnLimit),
+                   new GameResultRepository(orchestrate, resultToModelMapper, _ReturnLimit),
                    new PlayerStatusRepository(orchestrate),
                    _GameTypeRepository,
                    _PlayerStateRepository);
