@@ -1,15 +1,17 @@
-﻿namespace GameRoom.GameService.Data.Models
+﻿using System;
+
+namespace GameRoom.GameService.Data.Models
 {
     public class AccessToken
     {
-        private readonly int _PlayerId;
+        private readonly Guid _PlayerId;
 
-        public AccessToken(int playerId)
+        public AccessToken(Guid playerId)
         {
             _PlayerId = playerId;
         }
 
-        public int PlayerId
+        public Guid PlayerId
         {
             get { return _PlayerId; }
         }

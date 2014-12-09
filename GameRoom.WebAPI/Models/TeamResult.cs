@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace GameRoom.WebAPI.Models
@@ -6,6 +7,6 @@ namespace GameRoom.WebAPI.Models
     {
         public int Score { get; set; }
 
-        public IList<int> Players { get; set; }
+        public IList<Guid> Players { get; set; }
     }
 }

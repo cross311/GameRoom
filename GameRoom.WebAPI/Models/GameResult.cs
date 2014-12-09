@@ -6,7 +6,7 @@ namespace GameRoom.WebAPI.Models
 {
     public class GameResult
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         public string GameType { get; set; }
 

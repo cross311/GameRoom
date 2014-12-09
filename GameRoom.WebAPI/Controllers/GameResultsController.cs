@@ -28,7 +28,7 @@ namespace GameRoom.WebAPI.Controllers
         }
 
         // GET: GameResults/5
-        public IEnumerable<GameResult> Get(int playerId)
+        public IEnumerable<GameResult> Get(Guid playerId)
         {
             var gameResult = _GameResultService.AllForPlayer(playerId).HandleFailure(Request);
             return gameResult.Select(ToWebApiModel);
@@ -37,13 +37,13 @@ namespace GameRoom.WebAPI.Controllers
         // POST: GameResults
         public GameResult Post(GameResult gameResult)
         {
-            var request = ToServiceModel(0, gameResult);
+            var request = ToServiceModel(Guid.Empty, gameResult);
             var result = _GameResultService.Record(request).HandleFailure(Request);
             return ToWebApiModel(result);
         }
 
-        // PUT: GameResults/1
-        public GameResult Put(int id, GameResult gameResult)
+        // PUT: GameResults/1234-...
+        public GameResult Put(Guid id, GameResult gameResult)
         {
             var request = ToServiceModel(id, gameResult);
 
@@ -51,7 +51,7 @@ namespace GameRoom.WebAPI.Controllers
             return ToWebApiModel(result);
         }
 
-        private static GameService.Data.Models.GameResult ToServiceModel(int id, GameResult gameResult)
+        private static GameService.Data.Models.GameResult ToServiceModel(Guid id, GameResult gameResult)
         {
             var team1Result = new GameService.Data.Models.TeamResult(gameResult.Team1.Score, gameResult.Team1.Players);
             var team2Result = new GameService.Data.Models.TeamResult(gameResult.Team2.Score, gameResult.Team2.Players);

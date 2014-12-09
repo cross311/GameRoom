@@ -45,7 +45,7 @@ namespace GameRoom.WebAPI
                             gameType.Name,
                             new TeamResult(rand.Next(20), new[]
                             {
-                                players[index % n].Player.Id, players[(index + 1) % (index + 1) % n].Player.Id
+                                players[index % n].Player.Id, players[(index + 1) % n].Player.Id
                             }),
                             new TeamResult(rand.Next(20), new[]
                             {

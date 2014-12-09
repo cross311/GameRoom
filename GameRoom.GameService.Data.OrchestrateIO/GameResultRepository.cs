@@ -18,7 +18,7 @@ namespace GameRoom.GameService.Data.OrchestrateIO
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Models.GameResult> GetGameResultsForPlayer(int player)
+        public IEnumerable<Models.GameResult> GetGameResultsForPlayer(Guid playerId)
         {
             throw new NotImplementedException();
         }

@@ -4,22 +4,22 @@ namespace GameRoom.GameService.Data.Models
 {
     public class PlayerStatus
     {
-        private readonly int _Player;
+        private readonly Guid _PlayerId;
         private readonly PlayerState _State;
         private readonly string _Message;
         private readonly DateTime _Reported;
 
-        public PlayerStatus(int player, PlayerState state, string message, DateTime reported)
+        public PlayerStatus(Guid playerId, PlayerState state, string message, DateTime reported)
         {
-            _Player = player;
+            _PlayerId = playerId;
             _State = state;
             _Message = message;
             _Reported = reported;
         }
 
-        public int Player
+        public Guid PlayerId
         {
-            get { return _Player; }
+            get { return _PlayerId; }
         }
 
         public PlayerState State

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using GameRoom.GameService.Data.Models;
 using GameRoom.GameService.Response;
 
@@ -8,7 +9,7 @@ namespace GameRoom.GameService
     {
         IGameRoomResponse<IEnumerable<PlayerStatus>> All();
 
-        IGameRoomResponse<PlayerStatus> ForPlayer(int id);
+        IGameRoomResponse<PlayerStatus> ForPlayer(Guid playerId);
 
         IGameRoomResponse<IEnumerable<PlayerStatus>> AllInState(PlayerState state);
 

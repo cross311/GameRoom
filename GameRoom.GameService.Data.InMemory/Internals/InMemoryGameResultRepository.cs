@@ -21,13 +21,13 @@ namespace GameRoom.GameService.Data.InMemory
             return _GameResults;
         }
 
-        public IEnumerable<GameResult> GetGameResultsForPlayer(int player)
+        public IEnumerable<GameResult> GetGameResultsForPlayer(Guid playerId)
         {
             return
                 _GameResults.Where(
                     gameResult =>
-                        gameResult.Team1.Players.Contains(player)
-                        || gameResult.Team2.Players.Contains(player));
+                        gameResult.Team1.Players.Contains(playerId)
+                        || gameResult.Team2.Players.Contains(playerId));
         }
 
         public IEnumerable<GameResult> GetGameResultsForGameType(string gameType)
@@ -40,7 +40,7 @@ namespace GameRoom.GameService.Data.InMemory
 
         public GameResult RecordGameResults(GameResult gameResult)
         {
-            var id = _GameResults.Count + 1;
+            var id = Guid.NewGuid();
             var newGameResult = new GameResult(id, gameResult.GameType, gameResult.Team1, gameResult.Team2);
             _GameResults.Add(newGameResult);
             return newGameResult;

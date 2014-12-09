@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using GameRoom.GameService.Data.Models;
 using GameRoom.GameService.Response;
 
@@ -10,7 +11,7 @@ namespace GameRoom.GameService
 
         IGameRoomResponse<IEnumerable<GameResult>> All();
 
-        IGameRoomResponse<IEnumerable<GameResult>> AllForPlayer(int playerId);
+        IGameRoomResponse<IEnumerable<GameResult>> AllForPlayer(Guid playerId);
 
         IGameRoomResponse<GameResult> Record(GameResult gameResult);
 

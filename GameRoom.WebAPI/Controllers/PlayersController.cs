@@ -28,8 +28,8 @@ namespace GameRoom.WebAPI.Controllers
             return players.Select(ToWebApiModel);
         }
 
-        // GET: Players/5
-        public Player Get(int id)
+        // GET: Players/1234-...
+        public Player Get(Guid id)
         {
             var accessToken = new AccessToken(id);
             var player = _PlayerService.ForAccessToken(accessToken).HandleFailure(Request);

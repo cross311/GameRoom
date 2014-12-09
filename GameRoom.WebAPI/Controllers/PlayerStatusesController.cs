@@ -26,8 +26,8 @@ namespace GameRoom.WebAPI.Controllers
             return _PlayerStatusService.All().HandleFailure(Request).Select(ToWebApiModel);
         }
 
-        // GET: PlayerStatuses/5
-        public PlayerStatus Get(int id)
+        // GET: PlayerStatuses/1234-...
+        public PlayerStatus Get(Guid id)
         {
             var result = _PlayerStatusService.ForPlayer(id).HandleFailure(Request);
             return ToWebApiModel(result);
@@ -61,7 +61,7 @@ namespace GameRoom.WebAPI.Controllers
         {
             return new PlayerStatus
             {
-                Player =  result.Player,
+                Player =  result.PlayerId,
                 State = result.State.ToString(),
                 Message =  result.Message,
                 Reported = result.Reported

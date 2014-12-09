@@ -19,7 +19,7 @@ namespace GameRoom.GameService.Data.OrchestrateIO
             throw new NotImplementedException();
         }
 
-        public Models.PlayerStatus GetPlayerStatusForPlayer(int player)
+        public Models.PlayerStatus GetPlayerStatusForPlayer(Guid playerId)
         {
             throw new NotImplementedException();
         }

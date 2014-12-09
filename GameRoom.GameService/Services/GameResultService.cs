@@ -32,7 +32,7 @@ namespace GameRoom.GameService.Services
             return _GameResultRepository.GetGameResults().Success();
         }
 
-        public IGameRoomResponse<IEnumerable<GameResult>> AllForPlayer(int playerId)
+        public IGameRoomResponse<IEnumerable<GameResult>> AllForPlayer(Guid playerId)
         {
             return _GameResultRepository.GetGameResultsForPlayer(playerId).Success();
         }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using GameRoom.GameService.Data.Models;
 
 namespace GameRoom.GameService.Data
@@ -7,7 +8,7 @@ namespace GameRoom.GameService.Data
     {       
         IEnumerable<PlayerStatus> GetPlayerStatuses();
 
-        PlayerStatus GetPlayerStatusForPlayer(int player);
+        PlayerStatus GetPlayerStatusForPlayer(Guid playerId);
 
         IEnumerable<PlayerStatus> GetPlayerStatusesInState(PlayerState playerState);
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using GameRoom.GameService.Data.Models;
@@ -16,17 +17,17 @@ namespace GameRoom.GameService.Data.InMemory
         public IEnumerable<PlayerStatus> GetPlayerStatuses()
         {
             return _PlayerStatuses
-                .GroupBy(status => status.Player)
+                .GroupBy(status => status.PlayerId)
                 .Select(playerStatuses =>
                     playerStatuses
                         .OrderByDescending(status => status.Reported)
                         .FirstOrDefault());
         }
 
-        public PlayerStatus GetPlayerStatusForPlayer(int player)
+        public PlayerStatus GetPlayerStatusForPlayer(Guid playerId)
         {
             return GetPlayerStatuses()
-                .FirstOrDefault(status => status.Player == player);
+                .FirstOrDefault(status => status.PlayerId == playerId);
         }
 
         public IEnumerable<PlayerStatus> GetPlayerStatusesInState(PlayerState playerState)

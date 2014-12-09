@@ -4,7 +4,7 @@ namespace GameRoom.WebAPI.Models
 {
     public class PlayerStatus
     {
-        public int Player { get; set; }
+        public Guid Player { get; set; }
 
         public string State { get; set; }
 

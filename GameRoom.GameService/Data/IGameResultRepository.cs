@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using GameRoom.GameService.Data.Models;
 
@@ -7,7 +8,7 @@ namespace GameRoom.GameService.Data
     {
         IEnumerable<GameResult> GetGameResults();
 
-        IEnumerable<GameResult> GetGameResultsForPlayer(int player);
+        IEnumerable<GameResult> GetGameResultsForPlayer(Guid playerId);
 
         IEnumerable<GameResult> GetGameResultsForGameType(string gameType);
 

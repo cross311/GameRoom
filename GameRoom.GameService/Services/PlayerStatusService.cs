@@ -22,9 +22,9 @@ namespace GameRoom.GameService.Services
             return _PlayerStatusRepository.GetPlayerStatuses().Success();
         }
 
-        public IGameRoomResponse<PlayerStatus> ForPlayer(int id)
+        public IGameRoomResponse<PlayerStatus> ForPlayer(Guid playerId)
         {
-            return _PlayerStatusRepository.GetPlayerStatusForPlayer(id).Success();
+            return _PlayerStatusRepository.GetPlayerStatusForPlayer(playerId).Success();
         }
 
         public IGameRoomResponse<IEnumerable<PlayerStatus>> AllInState(PlayerState state)

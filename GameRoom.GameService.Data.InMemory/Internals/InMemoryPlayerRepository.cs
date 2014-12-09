@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using GameRoom.GameService.Data.Models;
 
@@ -15,7 +16,8 @@ namespace GameRoom.GameService.Data.InMemory
 
         public Player RegisterPlayer(Player player)
         {
-            var newPlayer = new Player(_Players.Count + 1, player.Name, player.Email);
+            var newPlayerId = Guid.NewGuid();
+            var newPlayer = new Player(newPlayerId, player.Name, player.Email);
 
             _Players.Add(newPlayer);
 
