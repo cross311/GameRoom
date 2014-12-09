@@ -121,6 +121,12 @@ angular.module('gameroom.players', ['ui.router', 'gameroom.account', 'gameroom.c
       }
     }
 
+    vm.state = function(state) {
+      return function(p) {
+        return state === p.state;
+      };
+    };
+
     vm.update = function(status) {
       status.player = currentPlayer.id;
       statusSvc.updatePlayerStatus(status).then(function() {
