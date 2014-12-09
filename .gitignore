@@ -130,3 +130,6 @@ Metrics.typemock*
 *.dbmdl
 *.mdf
 *.ldf
+
+# Ignore secret app settings file
+GameRoom.WebAPI/AppSettings.config

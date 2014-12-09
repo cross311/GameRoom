@@ -231,6 +231,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AppSettings.config" />
+    <Content Include="AppSettings.template.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Properties\PublishProfiles\GameRoomAPI.pubxml" />
   </ItemGroup>
   <PropertyGroup>
@@ -264,7 +268,9 @@
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
   </Target> -->
+  <Target Name="AfterBuild">
+    <Copy SourceFiles="AppSettings.template.config" DestinationFiles="AppSettings.config" SkipUnchangedFiles="true" Condition="!Exists('AppSettings.config')">
+    </Copy>
+  </Target>
 </Project>
